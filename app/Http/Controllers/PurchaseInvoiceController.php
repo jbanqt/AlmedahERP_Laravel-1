@@ -165,15 +165,22 @@ class PurchaseInvoiceController extends Controller
 
     public function payInvoice(Request $request)
     {
-        $validation = $request->validate([
-            'account_no' => 'required',
-            'cheque_no' => 'required',
-            'bank_name' => 'required',
-            'bank_location' => 'required'
-        ]);
-        
         //form data here
         $form_data = $request->input();
+        $data = new PaymentInvoiceLog();
+        
+        if (strcmp($form_data['payment_method'], 'Cheque') == 0) {
+            $validation = $request->validate([
+                'account_no' => 'required',
+                'cheque_no' => 'required',
+                'bank_name' => 'required',
+                'bank_location' => 'required'
+            ]);
+            $data->account_no = $form_data['account_no'];
+            $data->cheque_no = $form_data['cheque_no'];
+            $data->bank_name = $form_data['bank_name'];
+            $data->bank_location = $form_data['bank_location'];
+        }
 
         //get the corresponding invoice
         //try to find the last log corresponding to the invoice and then 
@@ -185,7 +192,6 @@ class PurchaseInvoiceController extends Controller
         $nextID = ($lastLog) ? $lastLog->id + 1 : 1;
         $description = $this->generateDescription($invoice, $lastLog);
         
-        $data = new PaymentInvoiceLog();
 
         $pi_log_id = "PI-LOG-" . str_pad($nextID, 3, '0', STR_PAD_LEFT);
         $data->pi_logs_id = $pi_log_id;
@@ -194,10 +200,6 @@ class PurchaseInvoiceController extends Controller
         $data->payment_method = $form_data['payment_method'];
         $data->payment_description = $description;
         $data->amount_paid = $form_data['amount_paid'];
-        $data->account_no = $form_data['account_no'];
-        $data->cheque_no = $form_data['cheque_no'];
-        $data->bank_name = $form_data['bank_name'];
-        $data->bank_location = $form_data['bank_location'];
         $data->save();
 
         $new_price = $invoice->total_amount_paid + $form_data['amount_paid'];

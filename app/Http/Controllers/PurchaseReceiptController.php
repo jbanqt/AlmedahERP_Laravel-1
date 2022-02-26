@@ -31,7 +31,7 @@ class PurchaseReceiptController extends Controller
             $permissions = null;
         }
         $purchase_receipts = PurchaseReceipt::get(
-            ['p_receipt_id', 'date_created', 'purchase_id', 'grand_total', 'pr_status']);
+            ['id','p_receipt_id', 'date_created', 'purchase_id', 'grand_total', 'pr_status']);
         return view('modules.buying.purchasereceipt', ['receipts' => $purchase_receipts, 'permissions'=> $permissions]);
     }
 
@@ -236,7 +236,9 @@ class PurchaseReceiptController extends Controller
         try {
             $form_data = $request->input();
 
-            $receipt = PurchaseReceipt::where('p_receipt_id', $form_data['receipt_id'])->with(['order', 'invoice', 'order_record'])->first();
+            $receipt = PurchaseReceipt::where('p_receipt_id', $form_data['receipt_id'])
+                        ->with(['order', 'invoice', 'order_record'])
+                        ->first();
             $received_mats = json_decode($form_data['mat_received'], true);
             $receipt_mats = json_decode($receipt->item_list_received, true);
 
@@ -255,13 +257,14 @@ class PurchaseReceiptController extends Controller
             $i = 1;
 
             $pending_order = $receipt->order_record;
-            $order_items = $pending_order->items_list_received;
+            $order_items = json_decode($pending_order->items_list_received, true);
             
             foreach ($order_items as $index => $order_item) {
                 $new_qty = intval($order_items[$index]['qty_received']) + intval($received_mats[$i]['qty_received']);
                 $order_items[$index]['qty_received'] = strval($new_qty);
                 $i++;
             }
+            
             $pending_order->items_list_received = json_encode($order_items);
             $pending_order->save();
 

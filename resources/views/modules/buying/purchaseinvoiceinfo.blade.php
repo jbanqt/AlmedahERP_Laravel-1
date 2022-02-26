@@ -277,7 +277,7 @@ $i = 1; ?>
                                     Total (PHP)
                                 </label>
                                 <input type="number" readonly required class="form-input form-control"
-                                    value={{ $invoice->grand_total }} id="priceToPay">
+                                    value={{ $invoice->payment_balance }} id="priceToPay">
                                 <br>
                                 @if ($invoice->pi_status !== 'Draft' && $invoice->pi_status !== 'Paid')
                                     <label class=" text-nowrap align-middle">
@@ -408,7 +408,7 @@ $i = 1; ?>
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Item List</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Cheque Details</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

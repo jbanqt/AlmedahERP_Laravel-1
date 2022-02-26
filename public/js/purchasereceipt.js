@@ -142,7 +142,7 @@ $("#receiveMaterials").click(function () {
             return;
         }
         received_mats[i] = {
-            item_code: $(`#item_code${i}`).html(),
+            item_code: $(`#item_code${i}`).html().replaceAll('\n', '').trim(),
             qty_received: $(`#qtyRec${i}`).val(),
         };
     }
