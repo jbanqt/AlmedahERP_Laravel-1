@@ -35,7 +35,7 @@ class BOMController extends Controller
         $bills_of_materials = BillOfMaterials::get(['bom_id', 'bom_name', 'product_code', 'component_code', 'is_active', 'is_default']);
         foreach ($bills_of_materials as $bom) {
             # code...
-            $bom->item_code = is_null($bom->product_code) ? $bom->component_code : $bom->product_code;    
+            $bom->item_code = is_null($bom->product_code) ? $bom->component_code : $bom->product_code;
         }
         return view('modules.BOM.bom', ['boms' => $bills_of_materials, 'permissions'=>$permissions]);
     }
@@ -70,14 +70,14 @@ class BOMController extends Controller
             $bom_name = "BOM-"; //initialize "BOM-"
 
             $bom = new BillOfMaterials();
-            
+
             $item_key = isset($form_data['product_code']) ? 'product_code' : 'component_code';
             $code = $form_data[$item_key];
-            
+
             if (isset($form_data['product_code'])) {
                 $bom->product_code = $code;
                 $item = ManufacturingProducts::where('product_code', $code)->first();
-                
+
             } else {
                 $bom->component_code = $code;
                 $item = Component::where('component_code', $code)->first();
