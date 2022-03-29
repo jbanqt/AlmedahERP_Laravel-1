@@ -1,5 +1,5 @@
 <script src="{{ asset('js/address.js') }}"></script>
-<script src="{{ asset('js/workcenter_native.js') }}"></script>
+<script src="{{ asset('js/workcenter.js') }}"></script>
 <script src="{{ asset('js/newWorkcenter.js') }}"></script>
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
     <div class="container-fluid">
@@ -37,24 +37,25 @@
 
 <div id="wc_alert_msg" class="alert alert-danger" style="display: none;">
 </div>
-<form action="" method="post" id="createworkcenter" class="create">
+<form action="{{ route('workcenter.store') }}" method="post" id="newworkcenter" class="create">
+    @csrf
     <br>
     <div class="container">
-         <form id="createworkcenter" name="createworkcenter" role="form">
-           
+        {{-- <form id="newworkcenter" name="newworkcenter" role="form">
+            @csrf --}}
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
-                    <label for="create_Work_Center_Code">Work Center Code</label>
+                    <label for="Work_Center_Code">Work Center Code</label>
 
-                    <input type="text" name="create_Work_Center_Code" id="create_Work_Center_Code" value="MOUNT-XXXX"
+                    <input type="text" name="Work_Center_Code" id="Work_Center_Code" value="MOUNT-XXXX"
                         class="form-control" disabled>
                 </div>
             </div>
             <div class="col-6">
                 <div class="form-group">
-                    <label for="create_Work_Center_label">Work Center Label</label>
-                    <input type="text" name="create_Work_Center_label" id="create_Work_Center_label" class="form-control">
+                    <label for="Work_Center_label">Work Center Label</label>
+                    <input type="text" name="Work_Center_label" id="Work_Center_label" class="form-control">
                 </div>
             </div>
         </div>
@@ -63,7 +64,7 @@
                 <div class="form-group">
                     <label for="Type">Type</label>
                     <select class="form-control" id="wc_select" onchange="showForm()">
-                        <option value="N/A" selected>--No Option Selected--</option>
+                        <option value="N/A" selected>--No Selected Option--</option>
                         <option value="Human">Human</option>
                         <option value="Machine">Machine</option>
                         <option value="Human and Machine">Human & Machine</option>
@@ -89,11 +90,11 @@
                                         name="Employee_name" list="employees" id="Employee_name" class="form-control">
                                 </td>
                                 <datalist id="employees">
-                               
-                                        <option value="">
-                                           
+                                    @foreach ($employees as $employee)
+                                        <option value="{{ $employee->employee_id }}">
+                                            {{ $employee->first_name }} {{ $employee->last_name }}
                                         </option>
-                                
+                                    @endforeach
                                 </datalist>
                                 <td style="width: 15%;" class="mr-qty-input"><input type="number" min="0" value=""
                                         name="Employee_hours" id="Employee_hours" class="form-control"></td>
@@ -125,11 +126,11 @@
                                     <option value="n/a">
                                         <li>No Option</li>
                                     </option>
-                                
-                                        <option value="">
-                                    
+                                    @foreach ($machines_manuals as $machine)
+                                        <option value="{{ $machine->machine_code }}">
+                                            {{ $machine->machine_name }}
                                         </option>
-                              
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -164,39 +165,39 @@
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
-                    <label for="create_Production_Capacity">Production Capacity</label>
-                    <input type="number" min="1" name="create_Production_Capacity" id="create_Production_Capacity" value=""
+                    <label for="Production_Capacity">Production Capacity</label>
+                    <input type="number" min="1" name="Production_Capacity" id="Production_Capacity" value="0"
                         class="form-control">
                 </div>
             </div>
             <div class="col-6">
                 <div class="form-group">
-                    <label for="create_Electricity_Cost">Electricity Cost</label>
-                    <input type="number" min="1" name="create_Electricity_Cost" id="create_Electricity_Cost" value="0" class="form-control hour_rate_compu">
+                    <label for="Electricity_Cost">Electricity Cost</label>
+                    <input type="number" min="1" name="Electricity_Cost" id="Electricity_Cost" value="0" class="form-control hour_rate_compu">
                 </div>
             </div>
             <div class="col-6">
                 <div class="form-group">
-                    <label for="create_Consumable_Cost">Consumable Cost</label>
-                    <input type="number" min="1" name="create_Consumable_Cost" id="create_Consumable_Cost" value="0" class="form-control hour_rate_compu">
+                    <label for="Consumable_Cost">Consumable Cost</label>
+                    <input type="number" min="1" name="Consumable_Cost" id="Consumable_Cost" value="0" class="form-control hour_rate_compu">
                 </div>
             </div>
             <div class="col-6">
                 <div class="form-group">
-                    <label for="create_Rent_Cost">Rent Cost</label>
-                    <input type="number" min="1" name="create_Rent_Cost" id="create_Rent_Cost" value="0" class="form-control hour_rate_compu">
+                    <label for="Rent_Cost">Rent Cost</label>
+                    <input type="number" min="1" name="Rent_Cost" id="Rent_Cost" value="0" class="form-control hour_rate_compu">
                 </div>
             </div>
             <div class="col-6">
                 <div class="form-group">
-                    <label for="create_Wages">Wages</label>
-                    <input type="number" min="1" name="create_Wages" id="create_Wages" value="0" class="form-control hour_rate_compu">
+                    <label for="Wages">Wages</label>
+                    <input type="number" min="1" name="Wages" id="Wages" value="0" class="form-control hour_rate_compu">
                 </div>
             </div>
             <div class="col-6">
                 <div class="form-group">
-                    <label for="create_Hour_rate">Hour Rate</label>
-                    <input type="number" value="0" min="0" name="create_Hour_rate" id="create_Hour_rate" value="" class="form-control" readonly>
+                    <label for="Hour_rate">Hour Rate</label>
+                    <input type="number" value="0" min="0" name="Hour_rate" id="Hour_rate" value="" class="form-control" readonly>
                 </div>
             </div>
         </div>

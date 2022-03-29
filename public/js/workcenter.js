@@ -49,11 +49,11 @@ $("form[name='deleteWC']").submit(function () {
 });
 
 $("#save_wc").click(function () {
-    //$.ajaxSetup({
-    //    headers: {
-    //        'X-CSRF-TOKEN': CSRF_TOKEN, //protection :>
-    //    }
-    //});
+    $.ajaxSetup({
+       headers: {
+           'X-CSRF-TOKEN': CSRF_TOKEN, //protection :>
+       }
+    });
 
     var flag = checkWC();
     if(!flag) {return;}
@@ -103,7 +103,7 @@ $("#save_wc").click(function () {
         processData: false,
         success: function (response) {
             console.log("success");
-            loadnewRouting();
+            loadworkcenterlist();
         }
     });
 });
