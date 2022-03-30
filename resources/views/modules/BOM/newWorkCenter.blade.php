@@ -1,3 +1,5 @@
+{{-- THIS IS AN OLD WORKCENTER CREATION MODULE --}}
+
 <script src="{{ asset('js/address.js') }}"></script>
 <script src="{{ asset('js/workcenter.js') }}"></script>
 <script src="{{ asset('js/newWorkcenter.js') }}"></script>
@@ -172,19 +174,22 @@
             <div class="col-6">
                 <div class="form-group">
                     <label for="Electricity_Cost">Electricity Cost</label>
-                    <input type="number" min="1" name="Electricity_Cost" id="Electricity_Cost" value="0" class="form-control hour_rate_compu">
+                    <input type="number" min="1" name="Electricity_Cost" id="Electricity_Cost" value="0"
+                        class="form-control hour_rate_compu">
                 </div>
             </div>
             <div class="col-6">
                 <div class="form-group">
                     <label for="Consumable_Cost">Consumable Cost</label>
-                    <input type="number" min="1" name="Consumable_Cost" id="Consumable_Cost" value="0" class="form-control hour_rate_compu">
+                    <input type="number" min="1" name="Consumable_Cost" id="Consumable_Cost" value="0"
+                        class="form-control hour_rate_compu">
                 </div>
             </div>
             <div class="col-6">
                 <div class="form-group">
                     <label for="Rent_Cost">Rent Cost</label>
-                    <input type="number" min="1" name="Rent_Cost" id="Rent_Cost" value="0" class="form-control hour_rate_compu">
+                    <input type="number" min="1" name="Rent_Cost" id="Rent_Cost" value="0"
+                        class="form-control hour_rate_compu">
                 </div>
             </div>
             <div class="col-6">
@@ -196,10 +201,10 @@
             <div class="col-6">
                 <div class="form-group">
                     <label for="Hour_rate">Hour Rate</label>
-                    <input type="number" value="0" min="0" name="Hour_rate" id="Hour_rate" value="" class="form-control" readonly>
+                    <input type="number" value="0" min="0" name="Hour_rate" id="Hour_rate" value=""
+                        class="form-control" readonly>
                 </div>
             </div>
         </div>
     </div>
 </form>
-
