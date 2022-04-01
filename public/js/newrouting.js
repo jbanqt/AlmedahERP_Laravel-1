@@ -9,14 +9,14 @@ var ROUTING_FAIL = "#routing_alert_msg";
     });
  */
 
-function addRowbomOperation(){
-    if($('#no-data')[0]){
-        deleteItemRow($('#no-data').parents('tr'));
+function addRowbomOperation() {
+    if ($("#no-data")[0]) {
+        deleteItemRow($("#no-data").parents("tr"));
     }
-    let lastRow = $('#newrouting-input-rows tr:last');
-    let nextID = (lastRow.length != 0) ? lastRow.data('id') + 1 : 0;
-    $('#newrouting-input-rows').append(
-    `
+    let lastRow = $("#newrouting-input-rows tr:last");
+    let nextID = lastRow.length != 0 ? lastRow.data("id") + 1 : 0;
+    $("#newrouting-input-rows").append(
+        `
     <tr data-id="${nextID}">
         <td class="text-center">
 
@@ -46,8 +46,8 @@ function addRowbomOperation(){
     $('select[name="operation"]')
         .eq(0)
         .clone()
-        .attr('id', `operation${nextID}`)
-        .attr('onchange', `operationSearch(${nextID})`)
+        .attr("id", `operation${nextID}`)
+        .attr("onchange", `operationSearch(${nextID})`)
         .appendTo(`#newrouting-input-rows tr:last .mr-qty-input`)
         .selectpicker();
 }
@@ -61,53 +61,58 @@ function clearOperationFields() {
 }
 
 $("#saveRouting").click(function () {
-    if(!$("#Routing_Name").val()) {
+    if (!$("#Routing_Name").val()) {
         slideAlert("Please provide a name for this routing.", ROUTING_FAIL);
         return;
+    } else if (!$("#description1").val()) {
+        slideAlert("Please select an Operation.", ROUTING_FAIL);
+        return;
     }
+
+    if (!$("#operation_time1").val()) {
+        slideAlert("Please fill up the Operation Time", ROUTING_FAIL);
+        return;
+    }
+
     $("#routingsForm").submit();
 });
 
 $("#routingsForm").submit(function () {
     $.ajaxSetup({
         headers: {
-            'X-CSRF-TOKEN': CSRF_TOKEN,
-        }
+            "X-CSRF-TOKEN": CSRF_TOKEN,
+        },
     });
-    // create a routing first....
+
     var routingData = new FormData(this);
 
     var operationsData = {};
     operations = $("#newrouting-input-rows tr");
 
-    for(let i=1; i<=operations.length; i++) {
+    for (let i = 1; i <= operations.length; i++) {
         operationsData[i] = {
-            'seq_id' : $(`#seq_id${i}`).val(),
-            'operation' : $(`#operation${i}`).val(),
-            'hour_rate' : $(`#hour_rate${i}`).val(),
-            'operation_time' : $(`#operation_time${i}`).val()
-        }
+            seq_id: $(`#seq_id${i}`).val(),
+            operation: $(`#operation${i}`).val(),
+            hour_rate: $(`#hour_rate${i}`).val(),
+            operation_time: $(`#operation_time${i}`).val(),
+        };
     }
 
-    routingData.append('routing_operations', JSON.stringify(operationsData))
+    routingData.append("routing_operations", JSON.stringify(operationsData));
 
     $.ajax({
         type: "POST",
-        url: $("#routingsForm").attr('action'),
-        async: false, //needed for retrieving routing_id from url
+        url: $(this).attr("action"),
         data: routingData,
-        cache: false,
         contentType: false,
         processData: false,
         success: function (response) {
+            slideAlert("Record saved.", ROUTING_SUCCESS);
             RoutingTable();
-        }
+        },
     });
-    //routingId = tempId;
-    // ..then input the routing operations
-    
-    return false;
 
+    return false;
 });
 
 $("#routeDelete").click(function () {
@@ -117,31 +122,31 @@ $("#routeDelete").click(function () {
 $("#deleteRouting").submit(function () {
     $.ajaxSetup({
         headers: {
-            'X-CSRF-TOKEN': CSRF_TOKEN,
-        }
+            "X-CSRF-TOKEN": CSRF_TOKEN,
+        },
     });
     $.ajax({
         type: "DELETE",
-        url: $(this).attr('action'),
+        url: $(this).attr("action"),
         cache: false,
         contentType: false,
         processData: false,
         success: function (response) {
             RoutingTable();
-        }
+        },
     });
     return false;
 });
 
-$("#saveOperation").click(function() {
+$("#saveOperation").click(function () {
     $("#operationForm").submit();
 });
 
 $("#operationForm").submit(function () {
     var formData = new FormData(this);
     $.ajax({
-        type: $(this).attr('method'),
-        url: $(this).attr('action'),
+        type: $(this).attr("method"),
+        url: $(this).attr("action"),
         data: formData,
         cache: false,
         contentType: false,
@@ -152,24 +157,23 @@ $("#operationForm").submit(function () {
             let dl = operation_elem.find("select");
             dl.find("option").remove();
             let operations = response.operations;
-            for(let i = 0; i < operations.length; i++) {
+            for (let i = 0; i < operations.length; i++) {
                 dl.append(
                     `<option data-subtext="${operations[i].operation_id}" value="${operations[i].operation_id}">
                         ${operations[i].operation_name}
                     </option>`
                 );
             }
-            $('.operation_select').selectpicker('refresh');
-        }
+            $(".operation_select").selectpicker("refresh");
+        },
     });
     return false;
 });
 
-
 function operationSearch(id) {
     var field = $(`#operation${id}`);
     var field_value = field.val();
-    if (field_value !== 'non') {
+    if (field_value !== "non") {
         $.ajax({
             type: "GET",
             url: `/get-operation/${field_value}`,
@@ -177,26 +181,31 @@ function operationSearch(id) {
             success: function (response) {
                 let operation = response.operation;
                 let description = operation.description;
-                let desc_clean = description.replace( /(<([^>]+)>)/ig, '');
+                let desc_clean = description.replace(/(<([^>]+)>)/gi, "");
                 $(`#workcenter${id}`).val(operation.wc_code);
                 $(`#description${id}`).val(desc_clean);
                 let wc = response.wc;
                 $(`#hour_rate${id}`).val(wc.hour_rate);
-            }
+            },
         });
     } else {
-        $('#newrouting-input-rows').find(`[data-id=${id}]`).find(".operation_field").val('');
+        $("#newrouting-input-rows")
+            .find(`[data-id=${id}]`)
+            .find(".operation_field")
+            .val("");
     }
 }
 
-
-$(document).ready(function() {
-    $('.summernote').summernote('code', '')({
+$(document).ready(function () {
+    $(".summernote").summernote(
+        "code",
+        ""
+    )({
         height: 300,
     });
-    $('#myTimeline').verticalTimeline({
+    $("#myTimeline").verticalTimeline({
         startLeft: false,
         alternate: false,
-        arrows: false
+        arrows: false,
     });
 });

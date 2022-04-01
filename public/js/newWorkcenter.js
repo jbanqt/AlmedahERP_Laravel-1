@@ -1,19 +1,24 @@
 function showForm() {
-   var wc_type = $("#wc_select").val();
-   if(wc_type == 'N/A') {
-      $("#f2").css("display", "none");
-      $("#f1").css("display", "none");
-  }
-   if (wc_type.includes('Human')) {
-      $("#f1").css("display", "block");
-      if (!wc_type.includes('Machine')) $("#f2").css("display", "none");
-   }
-   if (wc_type.includes('Machine')) {
-      $("#f2").css("display", "block");
-      if (!wc_type.includes('Human')) $("#f1").css("display", "none");
-   }
+    var wc_type = $("#wc_select").val();
+    if (wc_type == "N/A") {
+        $("#f2").css("display", "none");
+        $("#f1").css("display", "none");
+    }
+    if (wc_type.includes("Human")) {
+        $("#f1").css("display", "block");
+        if (!wc_type.includes("Machine")) $("#f2").css("display", "none");
+    }
+    if (wc_type.includes("Machine")) {
+        $("#f2").css("display", "block");
+        if (!wc_type.includes("Human")) $("#f1").css("display", "none");
+    }
 }
- /*function addRownewEmployee(){
+
+$(function () {
+    showForm();
+});
+
+/*function addRownewEmployee(){
   if($('#no-data')[0]){
       deleteItemRow($('#no-data').parents('tr'));
   }

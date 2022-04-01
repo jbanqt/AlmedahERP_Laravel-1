@@ -77,7 +77,9 @@
 						<div class="col-lg-3 col-md-12 offset-lg-2">
 							<div class="form-group">
 								<label for="jobStartDate">Start Date</label>
-								<input type="date" name="job_start_date" class="form-control" value="{{ isset($jobsched) ? $jobsched->start_date : null }}" onchange="sessionStorage.setItem('unsaved', true)" @if(isset($jobsched) && $jobsched->js_status != "Draft") readonly @endif>
+								
+								<input type="date" min="<?php echo date("Y-m-d"); ?>" name="job_start_date" class="form-control" value="{{ isset($jobsched) ? $jobsched->start_date : null }}" onchange="sessionStorage.setItem('unsaved', true)" @if(isset($jobsched) && $jobsched->js_status != "Draft") readonly @endif>
+							
 							</div>
 						</div>
 

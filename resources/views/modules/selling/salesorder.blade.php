@@ -214,7 +214,7 @@
                                                 <label class="text-nowrap align-middle">
                                                     Transaction Date
                                                 </label>
-                                                <input class="form-control" type="date" value=<?= $today ?> id="saleDate" name="saleDate" required>
+                                                <input class="form-control" type="date" min="<?php echo date("Y-m-d"); ?>" value=<?= $today ?> id="saleDate" name="saleDate" required>
                                             <br>
                                             <label class="text-nowrap align-middle">
                                                 Add to list

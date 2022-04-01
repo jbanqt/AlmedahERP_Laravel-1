@@ -123,7 +123,7 @@
                         </div>
                         <div class="col">
                             <label for="" class="text-nowrap align-middle">Image</label><br>
-                            <input type="file" name="component_image[]" id="componentImg[]">
+                            <input type="file" accept="image/*" name="component_image[]" id="componentImg[]">
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -204,7 +204,7 @@
                         </div>
                         <div class="col">
                             <label for="" class="text-nowrap align-middle">Image</label><br>
-                            <input type="file" name="component_image[]" id="componentImg[]">
+                            <input type="file" accept="image/*" name="component_image[]" id="componentImg[]">
                         </div>
                     </div>
                     <div class="row mt-2">

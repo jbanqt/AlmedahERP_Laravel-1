@@ -207,7 +207,7 @@ function openManufacturingWorkstationForm() {
 
 function loadManufacturingRouting() {
     $(document).ready(function () {
-        $("#contentRouting").load("/routing/create");
+        $("#contentRouting").load("/routing");
     });
 }
 function openManufacturingRoutingForm() {

@@ -68,7 +68,7 @@
                <div class="col-6">
                   <div class="form-group">
                      <label for="purpose">Issue Date</label>
-                     <input type="date" name="issue_date" value="{{$warranty_claims->issue_date}}" id="issue_date" class="form-control" readonly>
+                     <input type="date" min="<?php echo date("Y-m-d"); ?>" name="issue_date" value="{{$warranty_claims->issue_date}}" id="issue_date" class="form-control" readonly>
                   </div>
                </div>
             </div>

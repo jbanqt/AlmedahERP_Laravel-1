@@ -80,7 +80,7 @@
                   <div class="col-6">
                      <div class="form-group">
                         <label for="purpose">Issue Date</label>
-                        <input type="date" name="issue_date" id="issue_date" class="form-control" required>
+                        <input type="date" min="<?php echo date("Y-m-d"); ?>" name="issue_date" id="issue_date" class="form-control" required>
                      </div>
                   </div>
                </div>
@@ -129,7 +129,7 @@
                   <div class="col-6">
                      <div class="form-group">
                         <label for="purpose">Warranty Expiry Date</label>
-                        <input type="date" name="warranty_expiry_date" id="warranty_expiry_date" readonly class="form-control" readonly>
+                        <input type="date" min="<?php echo date("Y-m-d"); ?>" name="warranty_expiry_date" id="warranty_expiry_date" readonly class="form-control" readonly>
                      </div>
                   </div>
                </div>
@@ -143,7 +143,7 @@
                   <div class="col-6">
                      <div class="form-group">
                         <label for="purpose">AMC Expiry Date</label>
-                        <input type="date" name="warranty_expiry_date" id="amc_expiry_date" readonly class="form-control">
+                        <input type="date" min="<?php echo date("Y-m-d"); ?>" name="warranty_expiry_date" id="amc_expiry_date" readonly class="form-control">
                      </div>
                   </div>
                </div>
@@ -164,7 +164,7 @@
                   <div class="col-6">
                      <div class="form-group">
                         <label for="purpose">Resolution Date</label>
-                        <input type="date" name="resolution_date" id="resolution_date" class="form-control" required>
+                        <input type="date" min="<?php echo date("Y-m-d"); ?>" name="resolution_date" id="resolution_date" class="form-control" required>
                      </div>
                   </div>
                   <div class="col-6">

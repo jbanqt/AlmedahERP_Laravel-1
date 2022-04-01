@@ -26,7 +26,7 @@
                 </li>
                 <li class="nav-item li-bom">
                     <button style="background-color: #007bff;" class="btn btn-info btn" id="save_wc"
-                        style="float: left;" onclick="loadworkcenterlist();">Save</button>
+                        style="float: left;" onclick="if(checkWC())loadworkcenterlist();">Save</button>
                 </li>
             </ul>
         </div>

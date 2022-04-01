@@ -40,7 +40,7 @@
               <label class=" text-nowrap align-middle">
                 Date Borrowed
               </label>
-              <input type="datetime-local" class="form-input form-control" id="borrowTime">
+              <input type="datetime-local" min="<?php echo date("Y-m-d"); ?>" class="form-input form-control" id="borrowTime">
             </div>
           </div>
         </form>

@@ -62,7 +62,7 @@
     <div class="col-6">
       <div class="form-group">
         <label for="fname">Date</label>
-        <input type="date" name="fname" class="form-control">
+        <input type="date" min="<?php echo date("Y-m-d"); ?>" name="fname" class="form-control">
       </div>
       <div class="row">
         <div class="form-check">
@@ -108,7 +108,7 @@
     <div class="col-6">
       <div class="form-group">
         <label for="joiningdate">Payment Due Date</label>
-        <input type="date" name="" class="form-control">
+        <input type="date" min="<?php echo date("Y-m-d"); ?>" name="" class="form-control">
       </div>
     </div>
 

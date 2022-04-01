@@ -59,7 +59,7 @@
     </td>
     <td>
         <div class="form-group">
-          <input type="date" name="delivery_date[]" id="sq-delivery-date" class="form-control" value="{{ $item->delivery_date ?? "" }}" aria-describedby="helpId">
+          <input type="date" min="<?php echo date("Y-m-d"); ?>" name="delivery_date[]" id="sq-delivery-date" class="form-control" value="{{ $item->delivery_date ?? "" }}" aria-describedby="helpId">
         </div>
     </td>
     <td>

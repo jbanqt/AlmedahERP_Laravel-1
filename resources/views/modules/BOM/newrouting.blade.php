@@ -89,7 +89,7 @@
                     <td class="mr-qty-input">
                         <select name="operation" id="operation1" data-live-search="true"
                             class="form-control operation_select selectpicker" onchange="operationSearch(1);">
-                            <option value="non">No Operation Selected.</option>
+                            <option value="0">No Operation Selected.</option>
                             @foreach ($operations as $operation)
                                 <option data-subtext="{{ $operation->operation_id }}"
                                     value="{{ $operation->operation_id }}">
@@ -103,13 +103,13 @@
                     </td>
                     </td>
                     <td class="mr-unit-input col-3">
-                        <textarea class="form-control operation_field" id="description1" name="description" rows="2"
-                            disabled></textarea>
+                        <textarea class="form-control operation_field" id="description1" name="description" rows="2" disabled></textarea>
                     </td>
                     <td class="mr-unit-input col-2"><input type="number" min="0" value="" name="hour_rate"
                             id="hour_rate1" class="form-control operation_field" disabled></td>
                     <td class="mr-unit-input col-1"><input type="number" value="" name="operation_time"
-                            id="operation_time1" class="form-control operation_field"></td>
+                            id="operation_time1" class="form-control operation_field" for="Operation_Time">
+                    </td>
                     <td>
                         <a id="" class="btn" data-toggle="modal" data-target="#edit_routing" href="#"
                             role="button">
@@ -258,20 +258,19 @@
                         </div>
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="Default_WorkCenter">Default WorkCenter</label>
-                                <select name="Default_WorkCenter" id="Default_WorkCenter"
-                                    class="form-control selectpicker" data-live-search="true">
+                                <label for="Default_WorkCenter">Default Work Center</label>
+                                <input type="text" name="Default_WorkCenter" id="Default_WorkCenter"
+                                    class="form-control" list="work_center_list">
+                                <datalist id="work_center_list">
                                     @foreach ($work_centers as $wc)
-                                        <option data-subtext="{{ $wc->wc_code }}" value="{{ $wc->wc_code }}">
-                                            {{ $wc->wc_label }}</option>
+                                        <option value="{{ $wc->wc_code }}">{{ $wc->wc_label }}</option>
                                     @endforeach
-                                </select>
-
+                                </datalist>
                             </div>
                         </div>
                         <div class="form-group col-md-12">
                             <label for="Description">Description</label>
-                            <textarea id="Description" class="summernote" name="Description"></textarea>
+                            <textarea id="Description" class="form-control" name="Description"></textarea>
                         </div>
                     </form>
                 </div>
@@ -286,7 +285,7 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('.operation_select').selectpicker();
     });
 </script>

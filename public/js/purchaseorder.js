@@ -40,7 +40,7 @@ $("#rowBtn").on('click', function () {
             <span name="itemName${nextRow}" id="itemName${nextRow}"></span>
         </td>
         <td class="text-black-50">
-            <input type="date" name="date${nextRow}"
+            <input type="date"  name="date${nextRow}"
                 id="date${nextRow}" value=${$("#reqDate").val()}>
         </td>
         <td class="text-black-50">

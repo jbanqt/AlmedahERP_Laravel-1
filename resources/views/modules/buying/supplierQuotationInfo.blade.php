@@ -84,7 +84,7 @@ action="{{ route('supplierquotation.update', ['supplierquotation'=>$sq->supp_quo
               <div class="col-6">
               <div class="form-group">
                   <label for="date_created">Date</label>
-                  <input value="{{ $sq->date_created->format("Y-m-d") }}" type="date" name="date_created" id="date_created" class="form-control">
+                  <input value="{{ $sq->date_created->format("Y-m-d") }}" type="date" min="<?php echo date("Y-m-d"); ?>" name="date_created" id="date_created" class="form-control">
                 </div>
                </div>
             </div>

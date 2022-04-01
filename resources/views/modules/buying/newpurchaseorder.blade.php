@@ -123,7 +123,7 @@
                             <input type="date" readonly id="transDate" name="date" value="{{ now()->format("Y-m-d") }}" class="form-input form-control">
                             <br>
                             <label for="reqdbydate">Required by Date</label>
-                            <input type="date" name="reqdbydate" id="reqDate" class="form-input form-control">
+                            <input type="date" min="<?php echo date("Y-m-d"); ?>" name="reqdbydate" id="reqDate" class="form-input form-control">
                         </div>
                     </div>
                 </form>

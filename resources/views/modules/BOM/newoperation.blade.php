@@ -30,6 +30,11 @@
         </div>
     </div>
 </nav>
+<div id="operation_success_msg" class="alert alert-success" style="display: none;">
+</div>
+
+<div id="operation_alert_msg" class="alert alert-danger" style="display: none;">
+</div>
 <form action="{{ route('operations.store') }}" method="POST" id="operationModuleForm" class="create">
     @csrf
     <br>
@@ -44,9 +49,11 @@
             <div class="col-6">
                 <div class="form-group">
                     <label for="Default_workcenter">Default Work Center</label>
-                    <select class="form-control selectpicker" name="Default_WorkCenter" id="Default_WorkCenter" data-live-search="true">
+                    <select class="form-control selectpicker" name="Default_WorkCenter" id="Default_WorkCenter"
+                        data-live-search="true">
                         @foreach ($work_centers as $wc)
-                            <option data-subtext="{{ $wc->wc_code }}" value="{{ $wc->wc_code }}">{{ $wc->wc_label }}</option>
+                            <option data-subtext="{{ $wc->wc_code }}" value="{{ $wc->wc_code }}">
+                                {{ $wc->wc_label }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -55,7 +62,7 @@
             </div>
             <div class="form-group col-md-12">
                 <label for="operation_Description">Description</label>
-                <textarea id="Description" class="summernote" name="Description"></textarea>
+                <textarea id="Description" class="form-control" name="Description"></textarea>
             </div>
         </div>
     </div>

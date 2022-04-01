@@ -50,7 +50,7 @@ class MaterialsController extends Controller
             'material_name' => 'required|string',
             'material_category' => 'required|string',
             'uom_id'=> 'required|exists:materials_uom',
-            'rm_quantity' => 'required|integer|numeric|min:1',
+            'rm_quantity' => 'required|integer|numeric|min:0',
             'rm_status' => 'required',
             'material_image' => 'required',
             'material_image.*' => 'image' 
@@ -104,7 +104,12 @@ class MaterialsController extends Controller
             $data->reorder_qty = 50;
             ///////////
             $data->rm_status = $form_data['rm_status'];
-            $data->consumable = $form_data['consumable'] === "on" ? 1 : 0;
+            try{
+                $data->consumable = $form_data['consumable'] === "on" ? 1 : 0;
+            }catch(Exception $e){
+                $data->consumable = 0;
+            }
+            
             $data->item_image = json_encode($imagePath);
             $data->save();
             return response()->json([
@@ -131,7 +136,7 @@ class MaterialsController extends Controller
             'material_name' => 'required|string',
             'material_category' => 'required|string',
             'uom_id'=> 'required|exists:materials_uom',
-            'rm_quantity' => 'required|integer|numeric|min:1',
+            'rm_quantity' => 'required|integer|numeric|min:0',
             'rm_status' => 'required',
         ]);
 
@@ -165,6 +170,7 @@ class MaterialsController extends Controller
             $data->rm_quantity = $form_data['rm_quantity'];
             $data->stock_quantity = $data->rm_quantity * $data->uom->conversion_factor;
             $data->category->quantity += $data->stock_quantity;
+            $data->consumable = $form_data['consumable'];
             $data->category->save();
             // MAKE THESE FIELDS NOT-STATIC
             $data->reorder_level = 30;

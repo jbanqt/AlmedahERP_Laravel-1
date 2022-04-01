@@ -132,6 +132,20 @@ class RoutingsController extends Controller
             $routing = Routings::find($routings->id);
             $routing->routing_name = $form_data['Routing_Name'];
             $routing->save();
+
+            $routing_ops = json_decode($form_data['routing_operations']);
+            foreach ($routing_ops as $r_ops) {
+                $hour_rate = $r_ops->hour_rate;
+                $op_time = $r_ops->operation_time;
+                $r_operation = new RoutingOperation();
+                $r_operation->sequence_id = $r_ops->seq_id;
+                $r_operation->operation_id = $r_ops->operation;
+                $r_operation->routing_id = $routings->routing_id;
+                $r_operation->hour_rate = $hour_rate;
+                $r_operation->operation_time = $op_time;
+                $r_operation->operating_cost = floatval($hour_rate) * floatval($op_time);
+                $r_operation->save();
+            }
         } catch (Exception $e) {
             return $e;
         }

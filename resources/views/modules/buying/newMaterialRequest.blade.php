@@ -53,7 +53,7 @@
                   <div class="form-group">
                     <label for="required_date">Required Date</label>
 
-                    <input type="date" required="true" name="required_date" id="required_date" class="form-control">
+                    <input type="date" min="<?php echo date("Y-m-d"); ?>" required="true" name="required_date" id="required_date" class="form-control">
                   </div>
                 </div>
                 <div class="col-6">

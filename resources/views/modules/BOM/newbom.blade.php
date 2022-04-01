@@ -24,7 +24,8 @@
                         onclick="loadBOMtable();">Cancel</button>
                 </li>
                 <li class="nav-item li-bom">
-                    <button style="background-color: #007bff;" class="btn btn-info btn" style="float: left;" id="saveBom">Save</button>
+                    <button style="background-color: #007bff;" class="btn btn-info btn" style="float: left;"
+                        id="saveBom">Save</button>
                 </li>
             </ul>
         </div>
@@ -62,7 +63,8 @@
                     <select class="form-control bom-item-select selectpicker" data-live-search="true" id="manprod">
                         <option value="0">-No Product Selected-</option>
                         @foreach ($man_prods as $mp)
-                            <option data-subtext="{{ $mp->product_name }}" value="{{ $mp->product_code }}">{{ $mp->product_code }}</option>
+                            <option data-subtext="{{ $mp->product_name }}" value="{{ $mp->product_code }}">
+                                {{ $mp->product_code }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -71,7 +73,8 @@
                     <select class="form-control bom-item-select selectpicker" data-live-search="true" id="components">
                         <option value="0">-No Component Selected-</option>
                         @foreach ($components as $component)
-                            <option data-subtext="{{ $component->component_name }}" value="{{ $component->component_code }}">{{ $component->component_code }}</option>
+                            <option data-subtext="{{ $component->component_name }}"
+                                value="{{ $component->component_code }}">{{ $component->component_code }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -129,12 +132,14 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="routing">Routing</label>
-                            <select class="form-control selectpicker" data-live-search="true" name="routingSelect" id="routingSelect">
+                            <select class="form-control selectpicker" data-live-search="true" name="routingSelect"
+                                id="routingSelect">
                                 <option value="0">-No Routing Selected-</option>
                                 @foreach ($routings as $routing)
-                                    <option data-subtext="{{ $routing->routing_name }}" value="{{ $routing->routing_id }}">{{ $routing->routing_id }}</option>
+                                    <option data-subtext="{{ $routing->routing_name }}"
+                                        value="{{ $routing->routing_id }}">{{ $routing->routing_id }}</option>
                                 @endforeach
-                                <option data-subtext="Create a New Routing." value="newRouting">Create New Routing</option>
+                                <!-- <option data-subtext="Create a New Routing." value="newRouting">Create New Routing</option> -->
                             </select>
                         </div>
                     </div>
@@ -174,8 +179,8 @@
                                 <td class="mr-unit-input"><input type="text" value="" readonly name="Operation_cost"
                                         id="Operation_cost" class="form-control"></td>
                                 <td>
-                                    <a id="" class="btn" data-toggle="modal" data-target="#editLinkModal" href="#"
-                                        role="button">
+                                    <a id="" class="btn" data-toggle="modal" data-target="#editLinkModal"
+                                        href="#" role="button">
                                         <i class="fa fa-edit" aria-hidden="true"></i>
                                     </a>
                                     <a id="" class="btn delete-btn" href="#" role="button">
@@ -239,11 +244,11 @@
                                         class="form-control"></td>
                                 <td class="mr-unit-input"><input type="text" value="" readonly name="Rate" id="Rate"
                                         class="form-control"></td>
-                                <td class="mr-unit-input"><input type="text" value="" readonly name="Amount" id="Amount"
-                                        class="form-control"></td>
+                                <td class="mr-unit-input"><input type="text" value="" readonly name="Amount"
+                                        id="Amount" class="form-control"></td>
                                 <td>
-                                    <a id="" class="btn" data-toggle="modal" data-target="#editLinkModal" href="#"
-                                        role="button">
+                                    <a id="" class="btn" data-toggle="modal" data-target="#editLinkModal"
+                                        href="#" role="button">
                                         <i class="fa fa-edit" aria-hidden="true"></i>
                                     </a>
                                     <a id="" class="btn delete-btn" href="#" role="button">

@@ -60,7 +60,8 @@
     </div>
 </div>
 
-<form action="{{ route('bom.update', ['bom' => $bom->bom_id]) }}" method="post" id="saveBomForm" class="create">
+<form action="{{ route('bom.update', ['bom' => $bom->bom_id]) }}" method="post" id="saveBomForm"
+    class="create">
     <br>
     @csrf
     @method('PATCH')
@@ -73,33 +74,39 @@
                         @if ($bom->product_code == null)
                             <option value="0">-No Product Selected-</option>
                             @foreach ($man_prods as $mp)
-                                <option data-subtext="{{ $mp->product_name }}" value="{{ $mp->product_code }}">{{ $mp->product_code }}</option>
+                                <option data-subtext="{{ $mp->product_name }}" value="{{ $mp->product_code }}">
+                                    {{ $mp->product_code }}</option>
                             @endforeach
                         @else
-                            <option selected data-subtext="{{ $item->product_name }}" value="{{ $item->product_code }}">{{ $item->product_code }}
+                            <option selected data-subtext="{{ $item->product_name }}"
+                                value="{{ $item->product_code }}">{{ $item->product_code }}
                             </option>
                             @foreach ($man_prods as $mp)
                                 @if ($mp->product_code != $item->product_code)
-                                    <option data-subtext="{{ $mp->product_name }}" value="{{ $mp->product_code }}">{{ $mp->product_code }}</option>
+                                    <option data-subtext="{{ $mp->product_name }}"
+                                        value="{{ $mp->product_code }}">{{ $mp->product_code }}</option>
                                 @endif
                             @endforeach
                         @endif
                     </select>
                 </div>
-                <div class="form-group" id="component-select" @if($bom->component_code == null) hidden @endif>
+                <div class="form-group" id="component-select" @if ($bom->component_code == null) hidden @endif>
                     <label for="components">Component</label>
                     <select class="form-control selectpicker" id="components">
                         @if ($bom->component_code == null)
                             <option value="0">-No Component Selected-</option>
                             @foreach ($components as $cp)
-                                <option data-subtext="{{ $cp->component_name }}" value="{{ $cp->component_code }}">{{ $cp->component_code }}</option>
+                                <option data-subtext="{{ $cp->component_name }}"
+                                    value="{{ $cp->component_code }}">{{ $cp->component_code }}</option>
                             @endforeach
                         @else
-                            <option selected data-subtext="{{ $item->component_name }}" value="{{ $item->component_code }}">{{ $item->component_code }}
+                            <option selected data-subtext="{{ $item->component_name }}"
+                                value="{{ $item->component_code }}">{{ $item->component_code }}
                             </option>
                             @foreach ($components as $cp)
                                 @if ($item->component_code != $cp->component_code)
-                                    <option data-subtext="{{ $cp->component_name }}" value="{{ $cp->component_code }}">{{ $cp->component_code }}</option>
+                                    <option data-subtext="{{ $cp->component_name }}"
+                                        value="{{ $cp->component_code }}">{{ $cp->component_code }}</option>
                                 @endif
                             @endforeach
                         @endif
@@ -112,33 +119,36 @@
                     <div class="form-group">
                         <label for="Item_name">Item Name</label>
                         <input type="text" readonly name="Item_name" id="Item_name"
-                            value="@if ($bom->product_code != null) {{ $item->product_name }} @else {{ $item->component_name }} @endif" class="form-control">
+                            value="@if ($bom->product_code != null) {{ $item->product_name }} @else {{ $item->component_name }} @endif"
+                            class="form-control">
                     </div>
                     <div class="form-group" id="selected-uom">
                         <label for="Item_UOM">Item UOM</label>
-                        <input type="text" readonly name="Item_UOM" id="Item_UOM" value="@if ($bom->product_code != null) {{ $item->unit }} @endif" class="form-control">
+                        <input type="text" readonly name="Item_UOM" id="Item_UOM"
+                            value="@if ($bom->product_code != null) {{ $item->unit }} @endif"
+                            class="form-control">
                     </div>
                 </div>
             </div>
             <div class="col-6"></div>
             <div class="col-6">
                 <div class="form-check" hidden>
-                    <input class="form-check-input" type="checkbox" value="" id="is_component" 
-                    @if ($bom->component_code != null)
-                        checked
-                    @endif>
+                    <input class="form-check-input" type="checkbox" value="" id="is_component"
+                        @if ($bom->component_code != null) checked @endif>
                     <label class="form-check-label" for="is_component">
                         Is Component
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="Is_active" @if ($bom->is_active == 1) checked @endif>
+                    <input class="form-check-input" type="checkbox" value="" id="Is_active"
+                        @if ($bom->is_active == 1) checked @endif>
                     <label class="form-check-label" for="Is_active">
                         Is Active
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="default" @if ($bom->is_default == 1) checked @endif>
+                    <input class="form-check-input" type="checkbox" value="" id="default"
+                        @if ($bom->is_default == 1) checked @endif>
                     <label class="form-check-label" for="default">
                         Default
                     </label>
@@ -169,7 +179,7 @@
                                 @foreach ($routings as $ro)
                                     <option value="{{ $ro->routing_id }}">{{ $ro->routing_name }}</option>
                                 @endforeach
-                                <option value="newRouting">Create New Routing</option>
+                                <!-- <option value="newRouting">Create New Routing</option> -->
                             </select>
                         </div>
                     </div>
@@ -193,36 +203,41 @@
                         </thead>
                         <tbody class="" id="operations-input-rows">
                             @foreach ($routing_ops as $operation)
-                            <tr id="bomOperation-{{ $loop->index }}">
-                                <td class="text-center">
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input">
-                                    </div>
-                                </td>
-                                <td id="mr-code-input" class="mr-code-input">
-                                    <input type="text" value="{{ $operation['operation']->operation_name }}" readonly name="Operation_name" id="Operation_name" class="form-control">
-                                </td>
-                                <td style="width: 10%;" class="mr-qty-input">
-                                    <input type="text" value="{{ $operation['operation']->wc_code }}" readonly name="D_workcenter" id="D_workcenter" class="form-control">
-                                </td>
-                                <td class="mr-unit-input">
-                                    <input type="text" value="{{ $operation['operation']->description }}" readonly name="Desc" id="Desc" class="form-control">
-                                </td>
-                                <td class="mr-unit-input">
-                                    <input type="text" value="{{ $operation['operation_time'] }}" readonly name="Operation_Time" id="Operation_Time" class="form-control">
-                                </td>
-                                <td class="mr-unit-input">
-                                    <input type="text" value="{{ $operation['operating_cost'] }}" readonly name="Operation_cost" id="Operation_cost" class="form-control">
-                                </td>
-                                <td>
-                                    <a id="" class="btn" data-toggle="modal" data-target="#editLinkModal" href="#"
-                                        role="button">
-                                        <i class="fa fa-edit" aria-hidden="true"></i>
-                                    </a>
-                                    <a id="" class="btn delete-btn" href="#" role="button">
-                                        <i class="fa fa-trash" aria-hidden="true"></i>
-                                    </a>
-                                </td>
+                                <tr id="bomOperation-{{ $loop->index }}">
+                                    <td class="text-center">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input">
+                                        </div>
+                                    </td>
+                                    <td id="mr-code-input" class="mr-code-input">
+                                        <input type="text" value="{{ $operation['operation']->operation_name }}"
+                                            readonly name="Operation_name" id="Operation_name" class="form-control">
+                                    </td>
+                                    <td style="width: 10%;" class="mr-qty-input">
+                                        <input type="text" value="{{ $operation['operation']->wc_code }}" readonly
+                                            name="D_workcenter" id="D_workcenter" class="form-control">
+                                    </td>
+                                    <td class="mr-unit-input">
+                                        <input type="text" value="{{ $operation['operation']->description }}"
+                                            readonly name="Desc" id="Desc" class="form-control">
+                                    </td>
+                                    <td class="mr-unit-input">
+                                        <input type="text" value="{{ $operation['operation_time'] }}" readonly
+                                            name="Operation_Time" id="Operation_Time" class="form-control">
+                                    </td>
+                                    <td class="mr-unit-input">
+                                        <input type="text" value="{{ $operation['operating_cost'] }}" readonly
+                                            name="Operation_cost" id="Operation_cost" class="form-control">
+                                    </td>
+                                    <td>
+                                        <a id="" class="btn" data-toggle="modal" data-target="#editLinkModal"
+                                            href="#" role="button">
+                                            <i class="fa fa-edit" aria-hidden="true"></i>
+                                        </a>
+                                        <a id="" class="btn delete-btn" href="#" role="button">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
                             @endforeach
                             </tr>
                         </tbody>
@@ -266,39 +281,46 @@
                         </thead>
                         <tbody class="" id="materials-input-rows">
                             @foreach ($rateList as $mat_data)
-                            <tr id="bomMaterial-{{ $loop->index }}">
-                                <td class="text-center">
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input">
-                                    </div>
-                                </td>
-                                <td id="mr-code-input" class="mr-code-input">
-                                    <input type="text" value="{{ $loop->index + 1 }}" readonly name="No" id="No" class="form-control">
-                                </td>
-                                <td style="width: 10%;" class="mr-qty-input">
-                                    <input type="text" value="{{ $mat_data->item_code }}" readonly name="ItemCode" id="ItemCode" class="form-control">
-                                </td>
-                                <td class="mr-unit-input">
-                                    <input type="text" value="{{ $mat_data->qty }}" readonly name="Quantity" id="Quantity" class="form-control">
-                                </td>
-                                <td class="mr-unit-input">
-                                    <input type="text" value="{{ $mat_data->item->uom->item_uom }}" readonly name="UOM" id="UOM" class="form-control">
-                                </td>
-                                <td class="mr-unit-input">
-                                    <input type="number" value="{{ $mat_data->rate }}" @if($mat_data->rate != 1) readonly @endif name="Rate" id="Rate" class="form-control">
-                                </td>
-                                <td class="mr-unit-input"><input type="number" value="<?= $mat_data->qty * $mat_data->rate ?>" readonly name="Amount" id="Amount"
-                                        class="form-control"></td>
-                                <td>
-                                    <a id="" class="btn" data-toggle="modal" data-target="#editLinkModal" href="#"
-                                        role="button">
-                                        <i class="fa fa-edit" aria-hidden="true"></i>
-                                    </a>
-                                    <a id="" class="btn delete-btn" href="#" role="button">
-                                        <i class="fa fa-trash" aria-hidden="true"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                                <tr id="bomMaterial-{{ $loop->index }}">
+                                    <td class="text-center">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input">
+                                        </div>
+                                    </td>
+                                    <td id="mr-code-input" class="mr-code-input">
+                                        <input type="text" value="{{ $loop->index + 1 }}" readonly name="No" id="No"
+                                            class="form-control">
+                                    </td>
+                                    <td style="width: 10%;" class="mr-qty-input">
+                                        <input type="text" value="{{ $mat_data->item_code }}" readonly
+                                            name="ItemCode" id="ItemCode" class="form-control">
+                                    </td>
+                                    <td class="mr-unit-input">
+                                        <input type="text" value="{{ $mat_data->qty }}" readonly name="Quantity"
+                                            id="Quantity" class="form-control">
+                                    </td>
+                                    <td class="mr-unit-input">
+                                        <input type="text" value="{{ $mat_data->item->uom->item_uom }}" readonly
+                                            name="UOM" id="UOM" class="form-control">
+                                    </td>
+                                    <td class="mr-unit-input">
+                                        <input type="number" value="{{ $mat_data->rate }}"
+                                            @if ($mat_data->rate != 1) readonly @endif name="Rate" id="Rate"
+                                            class="form-control">
+                                    </td>
+                                    <td class="mr-unit-input"><input type="number"
+                                            value="<?= $mat_data->qty * $mat_data->rate ?>" readonly name="Amount"
+                                            id="Amount" class="form-control"></td>
+                                    <td>
+                                        <a id="" class="btn" data-toggle="modal"
+                                            data-target="#editLinkModal" href="#" role="button">
+                                            <i class="fa fa-edit" aria-hidden="true"></i>
+                                        </a>
+                                        <a id="" class="btn delete-btn" href="#" role="button">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -353,8 +375,8 @@
 </form>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        if($("#is_component").prop('checked') == true)  $("#selected-uom").css('display', 'none');
+    $(document).ready(function() {
+        if ($("#is_component").prop('checked') == true) $("#selected-uom").css('display', 'none');
         computeCosts();
     });
 </script>

@@ -190,14 +190,14 @@
                             <td>2</td>
                             <td><input type="number" class="form-input form-control" min="0" max="2"
                                     id="returnQuantity1"></td>
-                            <td><input type="datatime" class="form-input form-control" id="timeReturned"></td>
+                            <td><input type="datatime"  class="form-input form-control" id="timeReturned"></td>
                         </tr>
                         <tr>
                             <td class="text-bold">Hammer</td>
                             <td>3</td>
                             <td><input type="number" class="form-input form-control" min="0" max="3"
                                     id="returnQuantity1"></td>
-                            <td><input type="datatime" class="form-input form-control" id="timeReturned"></td>
+                            <td><input type="datatime"  class="form-input form-control" id="timeReturned"></td>
                         </tr>
                         <tr>
                             <td class="text-bold">Screwdriver</td>

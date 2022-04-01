@@ -60,7 +60,7 @@
                   </div>
                   <div class="col">
                     <label for="">Move Date</label>
-                    <input type="date" name='move_date' id="move_date" class="form-control" placeholder="Move Date" value="" required>
+                    <input type="date" min="<?php echo date("Y-m-d"); ?>" name='move_date' id="move_date" class="form-control" placeholder="Move Date" value="" required>
                   </div>
                 </div>
                 <div class="row">

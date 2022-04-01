@@ -28,7 +28,8 @@
                     <button class="btn btn-info btn" style="display: none;" onclick="" id="saveMMBtn">Save</button>
                 </li>
                 <li class="nav-item li-bom">
-                    <form action="{{ route('machinemanual.destroy', ['machinemanual' => $manual->id]) }}" id="deleteMM" method="post">
+                    <form action="{{ route('machinemanual.destroy', ['machinemanual' => $manual->id]) }}"
+                        id="deleteMM" method="post">
                         @csrf
                         @method('DELETE')
                         <button style="background-color: #ff0000d7;" class="btn btn-danger btn" style="float: left;"
@@ -40,6 +41,12 @@
     </div>
 </nav>
 
+<div id="mm_success_message" class="alert alert-success" style="display: none;">
+</div>
+
+<div id="mm_alert_message" class="alert alert-danger" style="display: none;">
+</div>
+
 <form action="{{ route('machinemanual.update', ['machinemanual' => $manual->id]) }}" id="mmForm" method="POST">
     @csrf
     @method('PATCH')
@@ -48,8 +55,26 @@
             <div class="col-4">
                 <div class="form-group">
                     <label for="Machine_Image">Machine Image</label>
-                    <input type="file" name="Machine_Image" id="Machine_Image">
+                    <img id="Machine_img_edit" src="{{ asset('storage/' . json_decode($manual->machine_image)[0]) }}"
+                        style="width:100%;">
+                    <br><br>
+                    <input type="file" accept="image/*" name="Machine_Image[]" id="Machine_Image"
+                        onchange="readURL1(this);" multiple>
                 </div>
+                <script>
+                    function readURL1(input) {
+                        if (input.files && input.files[0]) {
+                            var reader = new FileReader();
+
+                            reader.onload = function(e) {
+                                $('#Machine_img_edit')
+                                    .attr('src', e.target.result)
+                            };
+
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+                </script>
             </div>
             <div class="col-6">
             </div>
@@ -94,8 +119,8 @@
             </div>
             <div class="form-group col-md-12">
                 <label for="Machine_Description">Machine Description</label>
-                <textarea id="Machine_Description" class="summernote mm"
-                    name="Machine_Description">{{ $manual->machine_description }}</textarea>
+                <textarea id="Machine_Description" class="form-control mm" name="Machine_Description"
+                    required>{{ $manual->machine_description }}</textarea>
             </div>
         </div>
     </div>
@@ -112,5 +137,4 @@
             arrows: false
         });
     });
-
 </script>

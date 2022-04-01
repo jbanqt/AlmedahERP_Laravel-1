@@ -40,9 +40,20 @@
                                     <input type="text" class="form-control datepicker" id="date-from" name="date-from" value="{{date('Y')}}">
                                 </div>
                                 <div class="col-md-2 text-left">
-                                    <button class="btn btn-success" id="btn-filter">GO</button>
-                                    <button class="btn btn-primary" id="btn-excel" name="button-export" value="excel" type="submit">EXCEL</button>
-                                    <button class="btn btn-primary" id="btn-excel" name="button-export" value="pdf" type="submit">PDF</button>
+                                    <div class="row">
+                                        <div class="col-4">
+                                        <button class="btn btn-success" id="btn-filter">GO</button>
+                                        </div>
+                                        <div class="col-4">
+                                        <button class="btn btn-primary" id="btn-excel" name="button-export" value="excel" type="submit">EXCEL</button>
+                                        </div>
+                                        <div class="col-4">
+                                        <button class="btn btn-primary" id="btn-excel" name="button-export" value="pdf" type="submit">PDF</button>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
                                 </div>
 
 

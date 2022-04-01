@@ -100,12 +100,12 @@
                 <label class=" text-nowrap align-middle">
                   Product Pulled Off Market
                 </label>
-                <input class="form-control" type="date" value="2021-01-01" id="productPulledMarket">
+                <input class="form-control" type="date" min="<?php echo date("Y-m-d"); ?>" value="2021-01-01" id="productPulledMarket">
                 <br>
                 <label class="text-nowrap align-middle">
                   Date
                 </label>
-                <input class="form-control" type="date" value="2021-01-01" id="saleDate">
+                <input class="form-control" min="<?php echo date("Y-m-d"); ?>" type="date" value="2021-01-01" id="saleDate">
                 <br>
                 <label class=" text-nowrap align-middle">
                   Product Code
