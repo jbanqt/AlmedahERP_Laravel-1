@@ -371,9 +371,9 @@
                             <br>
                             <div class="col" id="branch_location_div" name="branch_location_div" style="display:none">
                                 <label>
-                                    Bank Name
+                                    Branch Location
                                 </label>
-                                <input type="text" class="form-input form-control" id="branch_location" name="branch_location" placeholder="Bank Name">
+                                <input type="text" class="form-input form-control" id="branch_location" name="branch_location" placeholder="Branch Location">
                             </div>
                             <br>
                             <div class="row" id="paymentInstallment" style="display:none;" onchange="installmentType()" >
