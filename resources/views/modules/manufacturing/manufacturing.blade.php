@@ -8,6 +8,7 @@
                         <li class="list-bom"><a class="nav-link menu" href="#" data-name="Item" data-parent="manufacturing">Item</a></li>
                         <li class="list-bom"><a class="nav-link menu" href="#" data-name="BOM" data-parent="manufacturing">Bills of Materials</a></li>
                         <li class="list-bom"><a class="nav-link menu" href="#" data-name="Workstation" data-parent="manufacturing">Workstation</a></li>
+                        <li class="list-bom menu" data-parent="manufacturing"><a class="nav-link" href="#">Work Center</a></li>
                         <li class="list-bom"><a class="nav-link menu" href="#" data-name="Operations" data-parent="manufacturing">Operations</a></li>
                         <li class="list-bom"><a class="nav-link menu" href="#" data-name="Routing" data-parent="manufacturing">Routing</a></li>
                     </ul>

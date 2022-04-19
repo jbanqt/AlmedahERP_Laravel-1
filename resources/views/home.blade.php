@@ -257,20 +257,16 @@
                 </a>
 
                 <!-- End of Menu Item Manufacturing -->
-                <!-- Submenu Manufacturing content -->
+                <!-- Submenu UserManagement content -->
                 <div id='submenuUsermanageMent' class="collapse sidebar-submenu">
                     <a href="#" id="inbox-toggle" data-parent="teamsAndRoles"
                         class="menu list-group-item list-group-item-action bg-secondary">
                         <span class="menu-collapsed align-middle">Roles</span>
                     </a>
-                </div>
-                <div id='submenuUsermanageMent' class="collapse sidebar-submenu">
                     <a href="#" id="inbox-toggle" data-parent="teamsAndRoles"
                         class="menu list-group-item list-group-item-action bg-secondary">
                         <span class="menu-collapsed align-middle">Departments</span>
                     </a>
-                </div>
-                <div id='submenuUsermanageMent' class="collapse sidebar-submenu">
                     <a href="#" id="inbox-toggle" data-parent="teamsAndRoles"
                         class="menu list-group-item list-group-item-action bg-secondary">
                         <span class="menu-collapsed align-middle">Employment Type</span>
@@ -330,135 +326,86 @@
                 </a>
                 <!-- End of Menu Item Manufacturing -->
                 <!-- Submenu Manufacturing content -->
-
-                @if (($permissions['BOM']['view'] ?? null) === 1 || !auth()->user())
-                    <div id='submenuManufacturing' class="collapse sidebar-submenu">
-                        <a href="#" id="inbox-toggle" data-parent="BOM"
-                            class="menu list-group-item list-group-item-action bg-secondary">
-                            <span class="menu-collapsed align-middle">Bom</span>
-                        </a>
-                    </div>
-                @endif
                 <div id='submenuManufacturing' class="collapse sidebar-submenu">
-                    <a href="#" id="inbox-toggle" data-parent="BOM"
-                        class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Work Center</span>
-                    </a>
-                </div>
-
-                <div id='submenuManufacturing' class="collapse sidebar-submenu">
-                    <a href="#" id="inbox-toggle" data-parent="BOM"
-                        class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Repair</span>
-                    </a>
-                </div>
-
-                @if (($permissions['Operations']['view'] ?? null) === 1 || !auth()->user())
-                    <div id='submenuManufacturing' class="collapse sidebar-submenu">
-                        <a href="#" id="inbox-toggle" data-parent="BOM"
-                            class="menu list-group-item list-group-item-action bg-secondary">
-                            <span class="menu-collapsed align-middle">Operations</span>
-                        </a>
-                    </div>
-                @endif
-
-                @if (($permissions['Machine_Manual']['view'] ?? null) === 1 || !auth()->user())
-                    <div id='submenuManufacturing' class="collapse sidebar-submenu">
-                        <a href="#" id="inbox-toggle" data-parent="BOM"
-                            class="menu list-group-item list-group-item-action bg-secondary">
-                            <span class="menu-collapsed align-middle">Machine Manual</span>
-                        </a>
-                    </div>
-                @endif
-
-                <div id='submenuManufacturing' class="collapse sidebar-submenu">
-                    <a href="#" id="inbox-toggle" data-parent="manufacturing"
-                        class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Production</span>
-                    </a>
-                </div>
-
-                @if (($permissions['Customer']['view'] ?? null) === 1 || !auth()->user())
-                    <div id='submenuManufacturing' class="collapse sidebar-submenu">
-                        <a href="#" id="inbox-toggle" data-parent="manufacturing"
-                            class="menu list-group-item list-group-item-action bg-secondary">
-                            <span class="menu-collapsed align-middle">Customer</span>
-                        </a>
-                    </div>
-                @endif
-
-                <div id='submenuManufacturing' class="collapse sidebar-submenu">
-                    <a href="#" id="inbox-toggle" data-parent="manufacturing"
-                        class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Production Plan</span>
-                    </a>
-                </div>
-
-                @if (($permissions['Station']['view'] ?? null) === 1 || !auth()->user())
-                    <div id='submenuManufacturing' class="collapse sidebar-submenu">
-                        <a href="#" id="inbox-toggle" data-parent="manufacturing"
-                            class="menu list-group-item list-group-item-action bg-secondary">
-                            <span class="menu-collapsed align-middle">Workstation</span>
-                        </a>
-                    </div>
-                @endif
-
-                @if (($permissions['Routings']['view'] ?? null) === 1 || !auth()->user())
-                    <div id='submenuManufacturing' class="collapse sidebar-submenu">
-                        <a href="#" id="inbox-toggle" data-parent="manufacturing"
-                            class="menu list-group-item list-group-item-action bg-secondary">
-                            <span class="menu-collapsed align-middle">Routing</span>
-                        </a>
-                    </div>
-                @endif
-
                 @if (($permissions['Inventory']['view'] ?? null) === 1 || !auth()->user())
-                    <div id='submenuManufacturing' class="collapse sidebar-submenu">
-                        <a href="#" id="inbox-toggle" data-parent="manufacturing"
-                            class="menu list-group-item list-group-item-action bg-secondary">
-                            <span class="menu-collapsed align-middle">Inventory</span>
-                        </a>
-                    </div>
+                    <a href="#" id="inbox-toggle" data-parent="manufacturing"
+                        class="menu list-group-item list-group-item-action bg-secondary">
+                        <span class="menu-collapsed align-middle">Inventory</span>
+                    </a>
                 @endif
 
                 @if (($permissions['Product']['view'] ?? null) === 1 || !auth()->user())
-                    <div id='submenuManufacturing' class="collapse sidebar-submenu">
-                        <a href="#" id="inbox-toggle" data-parent="manufacturing"
-                            class="menu list-group-item list-group-item-action bg-secondary">
-                            <span class="menu-collapsed align-middle">Item</span>
-                        </a>
-                    </div>
+                    <a href="#" id="inbox-toggle" data-parent="manufacturing"
+                        class="menu list-group-item list-group-item-action bg-secondary">
+                        <span class="menu-collapsed align-middle">Item</span>
+                    </a>
                 @endif
 
                 @if (($permissions['Component']['view'] ?? null) === 1 || !auth()->user())
-                    <div id='submenuManufacturing' class="collapse sidebar-submenu">
-                        <a href="#" id="inbox-toggle" data-parent="manufacturing"
-                            class="menu list-group-item list-group-item-action bg-secondary">
-                            <span class="menu-collapsed align-middle">Component</span>
-                        </a>
-                    </div>
+                    <a href="#" id="inbox-toggle" data-parent="manufacturing"
+                        class="menu list-group-item list-group-item-action bg-secondary">
+                        <span class="menu-collapsed align-middle">Component</span>
+                    </a>
+                @endif
+
+                @if (($permissions['BOM']['view'] ?? null) === 1 || !auth()->user())
+                    <a href="#" id="inbox-toggle" data-parent="BOM"
+                        class="menu list-group-item list-group-item-action bg-secondary">
+                        <span class="menu-collapsed align-middle">BOM</span>
+                    </a>
+                @endif
+
+                @if (($permissions['Machine_Manual']['view'] ?? null) === 1 || !auth()->user())
+                    <a href="#" id="inbox-toggle" data-parent="BOM"
+                        class="menu list-group-item list-group-item-action bg-secondary">
+                        <span class="menu-collapsed align-middle">Machine Manual</span>
+                    </a>
+                @endif
+
+                <a href="#" id="inbox-toggle" data-parent="BOM"
+                    class="menu list-group-item list-group-item-action bg-secondary">
+                    <span class="menu-collapsed align-middle">Work Center</span>
+                </a>
+
+                @if (($permissions['Operations']['view'] ?? null) === 1 || !auth()->user())
+                    <a href="#" id="inbox-toggle" data-parent="BOM"
+                        class="menu list-group-item list-group-item-action bg-secondary">
+                        <span class="menu-collapsed align-middle">Operations</span>
+                    </a>
+                @endif
+
+                @if (($permissions['Routings']['view'] ?? null) === 1 || !auth()->user())
+                    <a href="#" id="inbox-toggle" data-parent="manufacturing"
+                        class="menu list-group-item list-group-item-action bg-secondary">
+                        <span class="menu-collapsed align-middle">Routing</span>
+                    </a>
+                @endif
+               
+                <a href="#" id="inbox-toggle" data-parent="BOM"
+                    class="menu list-group-item list-group-item-action bg-secondary">
+                    <span class="menu-collapsed align-middle">Repair</span>
+                </a>
+
+                @if (($permissions['Station']['view'] ?? null) === 1 || !auth()->user())
+                    <a href="#" id="inbox-toggle" data-parent="manufacturing"
+                        class="menu list-group-item list-group-item-action bg-secondary">
+                        <span class="menu-collapsed align-middle">Workstation</span>
+                    </a>
+                @endif
+
+                @if (($permissions['Work_Order']['view'] ?? null) === 1 || !auth()->user())
+                    <a href="#" id="inbox-toggle" data-parent="manufacturing"
+                        class="menu list-group-item list-group-item-action bg-secondary">
+                        <span class="menu-collapsed align-middle">Work Order</span>
+                    </a>
                 @endif
 
                 @if (($permissions['Job_Scheduling']['view'] ?? null) === 1 || !auth()->user())
-                    <div id='submenuManufacturing' class="collapse sidebar-submenu">
-                        <a href="#" id="inbox-toggle" data-parent="manufacturing"
-                            class="menu list-group-item list-group-item-action bg-secondary">
-                            <span class="menu-collapsed align-middle">Job Scheduling</span>
-                        </a>
-                    </div>
+                    <a href="#" id="inbox-toggle" data-parent="manufacturing"
+                        class="menu list-group-item list-group-item-action bg-secondary">
+                        <span class="menu-collapsed align-middle">Job Scheduling</span>
+                    </a>
                 @endif
-
-                <div id='submenuManufacturing' class="collapse sidebar-submenu">
-                    <a href="#" id="inbox-toggle" data-parent="manufacturing"
-                        class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Item Attribute</span>
-                    </a>
-                </div>
-                <div id='submenuManufacturing' class="collapse sidebar-submenu">
-                    <a href="#" id="inbox-toggle" data-parent="manufacturing"
-                        class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Item Price</span>
-                    </a>
                 </div>
                 <!-- End of Submenu Manufacturing content -->
                 <!-- Menu Item Buying -->
@@ -480,10 +427,40 @@
                         </a>
                     @endif
 
+                    @if (($permissions['Supplier']['view'] ?? null) === 1 || !auth()->user())
+                        <a href="#" class="menu list-group-item list-group-item-action bg-secondary">
+                            <span class="menu-collapsed align-middle">Supplier</span>
+                        </a>
+                    @endif
+
+                    @if (($permissions['Request_Quotation']['view'] ?? null) === 1 || !auth()->user())
+                        <a href="#" data-parent="buying" class="menu list-group-item list-group-item-action bg-secondary">
+                            <span class="menu-collapsed align-middle">Request for Quotation</span>
+                        </a>
+                    @endif
+
+                    @if (($permissions['Supplier_Quotation']['view'] ?? null) === 1 || !auth()->user())
+                        <a href="#" data-parent="buying" class="menu list-group-item list-group-item-action bg-secondary">
+                            <span class="menu-collapsed align-middle">Supplier Quotation</span>
+                        </a>
+                    @endif
+
                     @if (($permissions['Purchase_Order']['view'] ?? null) === 1 || !auth()->user())
                         <a href="#" data-parent="buying" id="inbox-toggle"
                             class="menu list-group-item list-group-item-action bg-secondary">
                             <span class="menu-collapsed align-middle">Purchase Order</span>
+                        </a>
+                    @endif
+
+                    @if (($permissions['Purchase_Receipt']['view'] ?? null) === 1 || !auth()->user())
+                        <a href="#" data-parent="buying" class="menu list-group-item list-group-item-action bg-secondary">
+                            <span class="menu-collapsed align-middle">Purchase Receipt</span>
+                        </a>
+                    @endif
+
+                    @if (($permissions['Purchase_Invoice']['view'] ?? null) === 1 || !auth()->user())
+                        <a href="#" data-parent="buying" class="menu list-group-item list-group-item-action bg-secondary">
+                            <span class="menu-collapsed align-middle">Purchase Invoice</span>
                         </a>
                     @endif
 
@@ -494,32 +471,12 @@
                         </a>
                     @endif
 
-                    @if (($permissions['Purchase_Invoice']['view'] ?? null) === 1 || !auth()->user())
-                        <a href="#" data-parent="buying" class="menu list-group-item list-group-item-action bg-secondary">
-                            <span class="menu-collapsed align-middle">Purchase Invoice</span>
-                        </a>
-                    @endif
-
-                    @if (($permissions['Purchase_Receipt']['view'] ?? null) === 1 || !auth()->user())
-                        <a href="#" data-parent="buying" class="menu list-group-item list-group-item-action bg-secondary">
-                            <span class="menu-collapsed align-middle">Purchase Receipt</span>
-                        </a>
-                    @endif
-
-                    @if (($permissions['Request_Quotation']['view'] ?? null) === 1 || !auth()->user())
-                        <a href="#" data-parent="buying" class="menu list-group-item list-group-item-action bg-secondary">
-                            <span class="menu-collapsed align-middle">Request for Quotation</span>
-                        </a>
-                    @endif
+                    
                     <!-- <a href="#" data-parent="buying" id="inbox-toggle" data-parent="manufacturing"
                             class="menu list-group-item list-group-item-action bg-secondary">
                             <span class="menu-collapsed align-middle">Item</span>
                         </a> -->
-                    @if (($permissions['Supplier_Quotation']['view'] ?? null) === 1 || !auth()->user())
-                        <a href="#" data-parent="buying" class="menu list-group-item list-group-item-action bg-secondary">
-                            <span class="menu-collapsed align-middle">Supplier Quotation</span>
-                        </a>
-                    @endif
+                    
                 </div>
                 <!-- End of Submenu Buying content -->
                 <!-- Menu Item Accounting -->
@@ -537,9 +494,17 @@
                     <a href="#" id="inbox-toggle" class="menu list-group-item list-group-item-action bg-secondary">
                         <span class="menu-collapsed align-middle">Sales Invoice</span>
                     </a>
-                    <a href="#" id="inbox-toggle" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Customer</span>
-                    </a>
+                    @if (($permissions['Customer']['view'] ?? null) === 1 || !auth()->user())
+                        <a href="#" id="inbox-toggle" class="menu list-group-item list-group-item-action bg-secondary">
+                            <span class="menu-collapsed align-middle">Customer</span>
+                        </a>
+                    @endif
+
+                    @if (($permissions['Supplier']['view'] ?? null) === 1 || !auth()->user())
+                        <a href="#" class="menu list-group-item list-group-item-action bg-secondary">
+                            <span class="menu-collapsed align-middle">Supplier</span>
+                        </a>
+                    @endif
                     <a href="#" class="menu list-group-item list-group-item-action bg-secondary">
                         <span class="menu-collapsed align-middle">Purchase Invoice</span>
                     </a>
@@ -548,14 +513,6 @@
                     </a>
                     <a href="#" id="inbox-toggle" class="menu list-group-item list-group-item-action bg-secondary">
                         <span class="menu-collapsed align-middle">Accounts Receivable</span>
-                    </a>
-                    @if (($permissions['Supplier']['view'] ?? null) === 1 || !auth()->user())
-                        <a href="#" class="menu list-group-item list-group-item-action bg-secondary">
-                            <span class="menu-collapsed align-middle">Supplier</span>
-                        </a>
-                    @endif
-                    <a href="#" id="inbox-toggle" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Company</span>
                     </a>
                     <a href="#" id="inbox-toggle" class="menu list-group-item list-group-item-action bg-secondary">
                         <span class="menu-collapsed align-middle">Chart of Accounts</span>
@@ -577,23 +534,18 @@
                 <!-- End of Menu Item Selling -->
                 <!-- Submenu Item Selling -->
                 <div id='submenuSelling' class="collapse sidebar-submenu">
-                    <a href="#" data-parent="selling" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Customer</span>
-                    </a>
-                    <a href="#" data-parent="selling" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Quotation</span>
-                    </a>
+                    @if (($permissions['Customer']['view'] ?? null) === 1 || !auth()->user())
+                        <a href="#" data-parent="selling" class="menu list-group-item list-group-item-action bg-secondary">
+                            <span class="menu-collapsed align-middle">Customer</span>
+                        </a>
+                    @endif
+
                     @if (($permissions['Sales']['view'] ?? null) === 1 || !auth()->user())
                         <a href="#" data-parent="selling" class="menu list-group-item list-group-item-action bg-secondary">
                             <span class="menu-collapsed align-middle">Sales Order</span>
                         </a>
                     @endif
-                    <a href="#" data-parent="selling" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Sales Invoice</span>
-                    </a>
-                    <a href="#" data-parent="selling" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Blanket Order</span>
-                    </a>
+                
                 </div>
                 <!-- End of Submenu Item Selling -->
                 <!-- Menu Item Product Releasing -->
@@ -631,18 +583,17 @@
                     <a href="#" data-parent="stock" class="menu list-group-item list-group-item-action bg-secondary">
                         <span class="menu-collapsed align-middle">Stock Entry</span>
                     </a>
-                    <a href="#" data-parent="stock" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Delivery Note</span>
-                    </a>
+                    @if (($permissions['Purchase_Receipt']['view'] ?? null) === 1 || !auth()->user())
                     <a href="#" data-parent="stock" class="menu list-group-item list-group-item-action bg-secondary">
                         <span class="menu-collapsed align-middle">Purchase Receipt</span>
                     </a>
+                    @endif
+
+                    @if (($permissions['Material_Request']['view'] ?? null) === 1 || !auth()->user())
                     <a href="#" data-parent="stock" class="menu list-group-item list-group-item-action bg-secondary">
                         <span class="menu-collapsed align-middle">Material Request</span>
                     </a>
-                    <a href="#" data-parent="stock" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Pick List</span>
-                    </a>
+                    @endif
 
                     @if (($permissions['Stock_Moves']['view'] ?? null) === 1 || !auth()->user())
                         <a href="#" data-parent="stock" class="menu list-group-item list-group-item-action bg-secondary">
@@ -674,20 +625,16 @@
                     <a href="#" data-parent="crm" class="menu list-group-item list-group-item-action bg-secondary">
                         <span class="menu-collapsed align-middle">Leads</span>
                     </a>
+                    @if (($permissions['Customer']['view'] ?? null) === 1 || !auth()->user())
                     <a href="#" data-parent="crm" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Customers</span>
+                        <span class="menu-collapsed align-middle">Customer</span>
                     </a>
+                    @endif
                     <a href="#" data-parent="crm" class="menu list-group-item list-group-item-action bg-secondary">
                         <span class="menu-collapsed align-middle">Contacts</span>
                     </a>
                     <a href="#" data-parent="crm" class="menu list-group-item list-group-item-action bg-secondary">
                         <span class="menu-collapsed align-middle">Objectives</span>
-                    </a>
-                    <a href="#" data-parent="crm" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Opportunities</span>
-                    </a>
-                    <a href="#" data-parent="crm" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Lead Details</span>
                     </a>
                 </div>
                 <!-- End of Submenu Item CRM -->
@@ -710,32 +657,6 @@
                     </a>
                 </div>
                 <!-- End of Submenu Item REPORTS -->
-                <!-- Menu Item Quality -->
-                <a href="#submenuQuality" data-toggle="collapse" aria-expanded="false"
-                    class="bg-dark  list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-check-square fa-fw mr-3 menu"></span>
-                        <span class="menu-collapsed align-middle smaller menu">Quality</span>
-                        <span class="submenu-icon ml-auto"></span>
-                    </div>
-                </a>
-                <!-- End of Menu Item Quality -->
-                <!-- Submenu Item Quality -->
-                <div id='submenuQuality' class="collapse sidebar-submenu">
-                    <a href="#" data-parent="quality" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Quality Goal</span>
-                    </a>
-                    <a href="#" data-parent="quality" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Quality Procedure</span>
-                    </a>
-                    <a href="#" data-parent="quality" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Quality Review</span>
-                    </a>
-                    <a href="#" data-parent="quality" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Quality Feedback</span>
-                    </a>
-                </div>
-                <!-- End of Submenu Item Quality -->
                 <!-- Menu Item HR -->
                 <a href="#submenuHR" data-toggle="collapse" aria-expanded="false"
                     class="bg-dark  list-group-item list-group-item-action">
@@ -753,331 +674,18 @@
                             <span class="menu-collapsed align-middle">Employee</span>
                         </a>
                     @endif
-                    <a href="#" data-parent="hr" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Employee Attendance Tool</span>
+
+                    <a href="#" id="inbox-toggle" data-parent="teamsAndRoles"
+                        class="menu list-group-item list-group-item-action bg-secondary">
+                        <span class="menu-collapsed align-middle">Departments</span>
                     </a>
-                    <a href="#" data-parent="hr" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Attendance</span>
+                    <a href="#" id="inbox-toggle" data-parent="teamsAndRoles"
+                        class="menu list-group-item list-group-item-action bg-secondary">
+                        <span class="menu-collapsed align-middle">Employment Type</span>
                     </a>
-                    <a href="#" data-parent="hr" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Salary Structure</span>
-                    </a>
-                    <a href="#" data-parent="hr" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Salary Structure Assignment</span>
-                    </a>
+                    
                 </div>
                 <!-- End of Submenu Item HR -->
-                <!-- Menu Item Projects -->
-                <a href="#submenuProjects" data-toggle="collapse" aria-expanded="false"
-                    class="bg-dark  list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-server fa-fw mr-3 menu"></span>
-                        <span class="menu-collapsed align-middle smaller menu">Projects</span>
-                        <span class="submenu-icon ml-auto"></span>
-                    </div>
-                </a>
-                <!-- End of Menu Item Projects -->
-                <!-- Submenu Item Projects -->
-                <div id='submenuProjects' class="collapse sidebar-submenu">
-                    <a href="#" data-parent="projects" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Project</span>
-                    </a>
-                    <a href="#" data-parent="projects" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Task</span>
-                    </a>
-                    <a href="#" data-parent="projects" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Gantt Chart</span>
-                    </a>
-                    <a href="#" data-parent="projects" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Timesheet</span>
-                    </a>
-                    <a href="#" data-parent="projects" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Activity Type</span>
-                    </a>
-                </div>
-                <!-- End of Submenu Item Projects -->
-                <!-- Menu Item Retail -->
-                <a href="#submenuRetail" data-toggle="collapse" aria-expanded="false"
-                    class="bg-dark  list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fas fa-search-dollar fa-fw mr-3"></span>
-                        <span class="menu-collapsed align-middle smaller menu">Retail</span>
-                        <span class="submenu-icon ml-auto"></span>
-                    </div>
-                </a>
-                <!-- End of Menu Item Retail -->
-                <!-- Submenu Item Retail -->
-                <div id='submenuRetail' class="collapse sidebar-submenu">
-                    <a href="#" data-parent="retail" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Point-of-Sale Profile</span>
-                    </a>
-                    <a href="#" data-parent="retail" class="menu list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">POS</span>
-                    </a>
-                </div>
-                <!-- End of Submenu Item Retail -->
-                <!-- Menu Item Sales -->
-                <a href="#submenuSales" data-toggle="collapse" aria-expanded="false"
-                    class="bg-dark  list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-chart-line fa-fw mr-3"></span>
-                        <span class="menu-collapsed align-middle smaller menu">Sales</span>
-                        <span class="submenu-icon ml-auto"></span>
-                    </div>
-                </a>
-                <!-- End of Menu Item Sales -->
-                <!-- Submenu Item Sales -->
-                <div id='submenuSales' class="collapse sidebar-submenu">
-                    <a href="#" class="list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Customers</span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Contacts</span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Products & Services</span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Sale Quotations</span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action bg-secondary menu">
-                        <span class="menu-collapsed align-middle">Sale Orders</span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Mass Cust. Stock Move Invoicing</span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">ABC Analysis</span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Historical</span>
-                    </a>
-                    <a href="#submenuSalesReport" data-toggle="collapse" aria-expanded="false"
-                        class="bg-secondary list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-start align-items-center">
-                            <span class="fa fa-chart-bar fa-fw mr-3"></span>
-                            <span class="menu-collapsed align-middle">Reportings</span>
-                            <span class="submenu-icon ml-auto"></span>
-                        </div>
-                    </a>
-                    <div id='submenuSalesReport' class="collapse sidebar-submenu">
-                        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">
-                            <span class="menu-collapsed align-middle mx-3">Salesperson</span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">
-                            <span class="menu-collapsed align-middle mx-3">Sales Manager</span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">
-                            <span class="menu-collapsed align-middle mx-3">Sales Details</span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">
-                            <span class="menu-collapsed align-middle mx-3">Turnover Study</span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">
-                            <span class="menu-collapsed align-middle mx-3">Customers</span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">
-                            <span class="menu-collapsed align-middle mx-3">Maps</span>
-                            <span class="submenu-icon ml-auto"></span>
-                        </a>
-                    </div>
-                    <a href="#submenuSalesConfiguration" data-toggle="collapse" aria-expanded="false"
-                        class="bg-secondary list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-start align-items-center">
-                            <span class="fa fa-cog fa-fw mr-3"></span>
-                            <span class="menu-collapsed align-middle">Configuration</span>
-                            <span class="submenu-icon ml-auto"></span>
-                        </div>
-                    </a>
-                    <div id='submenuSalesConfiguration' class="collapse sidebar-submenu">
-                        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">
-                            <span class="menu-collapsed align-middle mx-3">Timetable Templates</span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">
-                            <span class="menu-collapsed align-middle mx-3">Cancel Reasons</span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">
-                            <span class="menu-collapsed align-middle mx-3">Durations</span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">
-                            <span class="menu-collapsed align-middle mx-3">Shipping Cost</span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">
-                            <span class="menu-collapsed align-middle mx-3">Partnet Price List</span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">
-                            <span class="menu-collapsed align-middle mx-3">Price List</span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">
-                            <span class="menu-collapsed align-middle mx-3">Quotation Template</span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">
-                            <span class="menu-collapsed align-middle mx-3">Taxes</span>
-                        </a>
-                    </div>
-                </div>
-                <!-- End of Submenu Item Sales -->
-                <!-- Menu Item Purchases -->
-                <a href="#submenuPurchases" data-toggle="collapse" aria-expanded="false"
-                    class="bg-dark  list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-shopping-cart fa-fw mr-3"></span>
-                        <span class="menu-collapsed align-middle smaller menu">Purchases</span>
-                        <span class="submenu-icon ml-auto"></span>
-                    </div>
-                </a>
-                <!-- End of Menu Item Purchases -->
-                <!-- Submenu Item Purchases -->
-                <div id='submenuPurchases' class="collapse sidebar-submenu">
-                    <a href="#" class="list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Suppliers</span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Contacts</span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Products & Services</span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Internal Purchase Request</span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Purchase Quotations</span>
-                    </a>
-                    @if (($permissions['Purchase_Order']['view'] ?? null) === 1 || !auth()->user())
-                        <a href="#" class="list-group-item list-group-item-action bg-secondary">
-                            <span class="menu-collapsed align-middle">Purchase Orders</span>
-                        </a>
-                    @endif
-                    <a href="#" class="list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Mass Suppl. Stock Move Invoicing</span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">ABC Analysis</span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Historical</span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action bg-secondary">
-                        <span class="menu-collapsed align-middle">Supplier Consultations</span>
-                    </a>
-                    <a href="#submenuPurchasesReport" data-toggle="collapse" aria-expanded="false"
-                        class="bg-secondary list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-start align-items-center">
-                            <span class="fa fa-chart-bar fa-fw mr-3"></span>
-                            <span class="menu-collapsed align-middle">Reportings</span>
-                            <span class="submenu-icon ml-auto"></span>
-                        </div>
-                    </a>
-                    <div id='submenuPurchasesReport' class="collapse sidebar-submenu">
-                        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">
-                            <span class="menu-collapsed align-middle mx-3">Purchase Buyer</span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">
-                            <span class="menu-collapsed align-middle mx-3">Purchase Manager</span>
-                        </a>
-                        @if (($permissions['Purchase_Order']['view'] ?? null) === 1 || !auth()->user())
-                            <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">
-                                <span class="menu-collapsed align-middle mx-3">Purchase Order</span>
-                            </a>
-                        @endif
-                        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">
-                            <span class="menu-collapsed align-middle mx-3">Suppliers Maps</span>
-                            <span class="submenu-icon ml-auto"></span>
-                        </a>
-                    </div>
-                    <a href="#submenuPurchasesConfiguration" data-toggle="collapse" aria-expanded="false"
-                        class="bg-secondary list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-start align-items-center">
-                            <span class="fa fa-cog fa-fw mr-3"></span>
-                            <span class="menu-collapsed align-middle">Configuration</span>
-                            <span class="submenu-icon ml-auto"></span>
-                        </div>
-                    </a>
-                    <div id='submenuPurchasesConfiguration' class="collapse sidebar-submenu">
-                        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">
-                            <span class="menu-collapsed align-middle mx-3">Partner Price List</span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">
-                            <span class="menu-collapsed align-middle mx-3">Price List</span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">
-                            <span class="menu-collapsed align-middle mx-3">Purchase Request Creator</span>
-                        </a>
-                    </div>
-                </div>
-                <!-- End of Submenu Item Purchases -->
-                <!-- Menu Item Job Costing -->
-                <a href="#submenuJobCosting" data-toggle="collapse" aria-expanded="false"
-                    class="bg-dark  list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-list-alt fa-fw mr-3"></span>
-                        <span class="menu-collapsed align-middle smaller menu">Job Costing</span>
-                        <span class="submenu-icon ml-auto"></span>
-                    </div>
-                </a>
-                <!-- End of Menu Item Job Costing -->
-                <!-- Menu Item Invoicing Project -->
-                <a href="#submenuInvoicingProject" data-toggle="collapse" aria-expanded="false"
-                    class="bg-dark  list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-server fa-fw mr-3"></span>
-                        <span class="menu-collapsed align-middle smaller menu">Invoicing Project</span>
-                    </div>
-                </a>
-                <!-- End of Menu Item Invoicing Project -->
-                <!-- Menu Item Invoicing -->
-                <a href="#submenuInvoicing" data-toggle="collapse" aria-expanded="false"
-                    class="bg-dark  list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-file-alt fa-fw mr-3"></span>
-                        <span class="menu-collapsed align-middle smaller menu">Invoicing</span>
-                        <span class="submenu-icon ml-auto"></span>
-                    </div>
-                </a>
-                <!-- End of Menu Item Invoicing -->
-                <!-- Menu Item Cash Management -->
-                <a href="#submenuCashManagement" data-toggle="collapse" aria-expanded="false"
-                    class="bg-dark  list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-money-bill fa-fw mr-3"></span>
-                        <span class="menu-collapsed align-middle smaller menu">Cash Management</span>
-                        <span class="submenu-icon ml-auto"></span>
-                    </div>
-                </a>
-                <!-- End of Menu Item Cash Management -->
-                <!-- Menu Item Stock Management -->
-                <a href="#submenuStockManagement" data-toggle="collapse" aria-expanded="false"
-                    class="bg-dark  list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-cubes fa-fw mr-3"></span>
-                        <span class="menu-collapsed align-middle smaller menu">Stock Management</span>
-                        <span class="submenu-icon ml-auto"></span>
-
-                    </div>
-                </a>
-                <!-- End of Menu Item Stock Management -->
-                <!-- Menu Item Application Config -->
-                <a href="#submenuApplicationConfig" data-toggle="collapse" aria-expanded="false"
-                    class="bg-dark  list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-cog fa-fw mr-3"></span>
-                        <span class="menu-collapsed align-middle smaller menu">Application Config</span>
-                        <span class="submenu-icon ml-auto"></span>
-                    </div>
-                </a>
-                <!-- End of Menu Item Application Config -->
-                <!-- Menu Item Administration -->
-                <a href="#submenuAdministration" data-toggle="collapse" aria-expanded="false"
-                    class="bg-dark  list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-wrench fa-fw mr-3"></span>
-                        <span class="menu-collapsed align-middle smaller menu">Administration</span>
-                        <span class="submenu-icon ml-auto"></span>
-                    </div>
-                </a>
-
-                <!-- End of Menu Item Administration -->
                 <a href="#submenunewUI" data-toggle="collapse" aria-expanded="false"
                     class="bg-dark  list-group-item list-group-item-action flex-column align-items-start">
                     <div class="d-flex w-100 justify-content-start align-items-center">

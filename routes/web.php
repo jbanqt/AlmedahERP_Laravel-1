@@ -509,12 +509,15 @@ Route::get('/newsuppliergrouptable', function() {
 });
 
 /**STOCK ROUTES */
-// Route::get('/stock', function () {
-//     return view('modules.stock.stock');
-// });
-//Route::get('/stock', [StockMovesController::class, 'index']);
+Route::get('/stock', function () {
+    return view('modules.stock.stock');
+});
+// Route::get('/stock', [StockMovesController::class, 'index']);
 
 /**STOCK ENTRY ROUTES */
+Route::get('/stockentry', function () {
+    return view('modules.manufacturing.stockentry');
+});
 Route::get('/openNewStockEntry', function () {
     return view('modules.manufacturing.NewStockEntry');
 });
@@ -605,8 +608,8 @@ Route::put('/update-employee/{id}', [EmployeeController::class, 'update']);
 
 
 /**WORK CENTER ROUTES **/
-Route::resource('/workcenter', WorkCenterController::class);
 Route::get('/newworkcenter', [WorkCenterController::class, 'routingCreateForm']);
+Route::resource('/workcenter', WorkCenterController::class);
 
 /**WORK ORDER ROUTES*/
 Route::get('/workorder', [WorkOrderController::class, 'index']);

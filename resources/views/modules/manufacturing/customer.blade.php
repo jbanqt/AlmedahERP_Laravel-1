@@ -43,7 +43,7 @@
                                 <td><img src="images/img.png" class="customer-modal-image" height="37" onError="this.onerror=null;this.src='images/defaultuser.png';"></td>
                                 <td class="text-black-50"><?=$row["email_address"]?></td>
                                 <td class="text-black-50"><?=$row["company_name"]?></td>
-                                @if (($permissions['Customer']['edit'] ?? null) === 1 || !auth()->user()))
+                                @if (($permissions['Customer']['edit'] ?? null) === 1 || !auth()->user())
                                     <td class="">
                                         <a href="#" class="btn btn-success btn-sm rounded-0 editBtn" type="button"><i class="fa fa-edit"></i></a>
                                     </td>

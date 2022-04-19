@@ -26,7 +26,7 @@
                 </li>
                 <li class="nav-item li-bom">
                     <button style="background-color: #007bff;" class="btn btn-info btn" id="save_wc"
-                        style="float: left;" onclick="if(checkWC())loadworkcenterlist();">Save</button>
+                        style="float: left;">Save</button>
                 </li>
             </ul>
         </div>
@@ -77,6 +77,7 @@
                     <table class="table border-bottom table-hover table-bordered" id="operations">
                         <thead class="border-top border-bottom bg-light">
                             <tr class="text-muted">
+                                <td class="text-center">Employee ID</td>
                                 <td class="text-center">Employee Name</td>
                                 <td class="text-center">Hours</td>
                                 <td class="text-center">Minutes</td>
@@ -85,23 +86,26 @@
                             </tr>
                         </thead>
                         <tbody class="" id="newemployee-input-rows">
-                            <tr id="employee-1">
-                                <td id="mr-code-input" class="mr-code-input"><input type="text" value=""
-                                        name="Employee_name" list="employees" id="Employee_name" class="form-control">
+                            <datalist id="employees">
+                                @foreach ($employees as $employee)
+                                    <option value="{{ $employee->employee_id }}">
+                                        {{ $employee->first_name }} {{ $employee->last_name }}
+                                    </option>
+                                @endforeach
+                            </datalist>
+                            <tr id="employee-1" class="newemployee-row">
+                                <td id="mr-code-input" class="mr-code-input e_id"><input type="text" name="Employee_id"
+                                    list="employees" id="Employee_id" class="form-control wc_employee id_field">
                                 </td>
-                                <datalist id="employees">
-                                    @foreach ($employees as $employee)
-                                        <option value="{{ $employee->employee_id }}">
-                                            {{ $employee->first_name }} {{ $employee->last_name }}
-                                        </option>
-                                    @endforeach
-                                </datalist>
+                                <td class="mr-qty-input e_name" class="mr-code-input"><input type="text" value=""
+                                        name="Employee_name" id="Employee_name" class="form-control wc_employee name_field">
+                                </td>
                                 <td style="width: 15%;" class="mr-qty-input"><input type="number" min="0" value=""
-                                        name="Employee_hours" id="Employee_hours" class="form-control"></td>
+                                        name="Employee_hours" id="Employee_hours" class="form-control wc_employee"></td>
                                 <td style="width: 15%;" class="mr-qty-input"><input type="number" min="0" value=""
-                                        name="Employee_minutes" id="Employee_minutes" class="form-control"></td>
+                                        name="Employee_minutes" id="Employee_minutes" class="form-control wc_employee"></td>
                                 <td style="width: 15%;" class="mr-qty-input"><input type="number" min="0" value=""
-                                        name="Employee_seconds" id="Employee_seconds" class="form-control"></td>
+                                        name="Employee_seconds" id="Employee_seconds" class="form-control wc_employee"></td>
                                 <td>
                                     <a id="" class="btn delete-btn" href="#" role="button">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
@@ -146,11 +150,12 @@
                             <tbody class="" id="newmachine-input-rows">
                                 <tr data-id="${nextID}">
                                     <td id="mr-code-input" class="mr-code-input"><input type="text" value="" readonly
-                                            name="machine_process" id="machine_process" class="form-control"></td>
+                                            name="machine_process" id="machine_process" class="form-control wc_machine">
+                                    </td>
                                     <td style="width: 10%;" class="mr-qty-input"><input type="text" value="" readonly
-                                            name="setup_time" id="setup_time" class="form-control">
+                                            name="setup_time" id="setup_time" class="form-control wc_machine">
                                     <td style="width: 10%;" class="mr-qty-input"><input type="text" value="" readonly
-                                            name="Running_time" id="Running_time" class="form-control">
+                                            name="Running_time" id="Running_time" class="form-control wc_machine">
 
                                 </tr>
                             </tbody>
@@ -167,7 +172,7 @@
                 <div class="form-group">
                     <label for="Production_Capacity">Production Capacity</label>
                     <input type="number" min="1" name="Production_Capacity" id="Production_Capacity" value="0"
-                        class="form-control">
+                        class="form-control hour_rate_compu">
                 </div>
             </div>
             <div class="col-6">

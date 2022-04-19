@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 
 
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="justify-content: space-between;">
     <div class="container-fluid">
         <h2 class="navbar-brand" style="font-size: 35px;">Sales Order</h2>
@@ -198,7 +199,7 @@
                                                 <label class=" text-nowrap align-middle">
                                                     Product Code
                                                 </label>
-                                                <select class="form-control" id="saleProductCode"  name="saleProductCode" onchange="enableAddtoProduct()" required>
+                                                <select class="form-control selectpicker" id="saleProductCode"  name="saleProductCode" onchange="enableAddtoProduct()" data-live-search="true" required>
                                                     <option value="none" selected disabled>
                                                         Select an Option
                                                     </option>
@@ -207,14 +208,13 @@
                                                 
                                             </div>
                                         </div>
-                                        <?php $today = date('Y-m-d'); ?>
                                         <div class="col">
                                             <div class="form-group">
                                                 <br>
                                                 <label class="text-nowrap align-middle">
                                                     Transaction Date
                                                 </label>
-                                                <input class="form-control" type="date" min="<?php echo date("Y-m-d"); ?>" value=<?= $today ?> id="saleDate" name="saleDate" required>
+                                                <input class="form-control" type="date" id="saleDate" name="saleDate" required>
                                             <br>
                                             <label class="text-nowrap align-middle">
                                                 Add to list
@@ -736,7 +736,6 @@
         var mm = String(today.getMonth() + 1).padStart(2, '0'); 
         var yyyy = today.getFullYear();
         today = mm + '/' + dd + '/' + yyyy;
-        document.getElementById('currentDate').value = today;
         var componentsOrder;
         var materialsInComponents;
         var mat_insufficient = false;
@@ -898,7 +897,7 @@
                 console.log(data);
                 $('#notif').text('');
                 $('#notif').html(
-                    '<li>' + data.responseJSON["message"] + '</li>'
+                    '<li>' + Object.keys(data.responseJSON["errors"]) + '</li>'
                 );
             }
         });
@@ -966,12 +965,18 @@
                                                     </option>`);
                 response.forEach(row =>{
                     $('#saleProductCode').append(
-                        `<option value="` + row['product_code'] + `" data-price = "` + row['sales_price_wt'] + `" data-stock = "` + row['stock_unit'] +`" data-id="` +row['id'] + `">
+                        `<option value="` + row['product_code'] + `" data-price = "` + row['sales_price_wt'] + `" data-stock = "` + row['stock_unit'] +`" data-id="` +row['id'] + '"data-tokens="'+ row['product_code'] + `">
                                                             ` + row['product_code'] + ` (` + row['sale_supply_method'] + `)` +`</option>`
                     );
                 })
                 $("#ajaxStart").attr("disabled", false);
                 $("#toWorkOrder").attr("disabled", false);
+                
+                //Initializes product picker to be searchable
+                $('#saleProductCode').selectpicker();
+
+                //Sets date today as default saleDate
+                document.getElementById('saleDate').valueAsDate = new Date();
             },
             error: function (response, error) {
                 // alert("Request: " + JSON.stringify(request));

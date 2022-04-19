@@ -99,8 +99,7 @@ function selectPaymentType() {
         document.getElementById("view_account_no_div").style.display = "";
         document.getElementById("view_account_name_div").style.display = "";
         document.getElementById("view_bank_name_div").style.display = "";
-        document.getElementById("view_branch_location_div").style.display =
-            "none";
+        document.getElementById("view_branch_location_div").style.display = "";
     }
 }
 
@@ -193,8 +192,9 @@ var workOrderComp = [];
 var workOrderCompElements = [];
 var workOrderProd = [];
 var workOrderProdElements = [];
-let componentMaterials = [];
-let productMaterials = [];
+var componentMaterials;
+var productMaterials = [];
+var componentsOnly = [];
 
 function contains(names, arr) {
     namelist = [];
@@ -760,14 +760,14 @@ function viewPayments(id) {
                 document.getElementById("view_salePaymentMethod").remove(i);
             }
             if (response === "Cash") {
-                "#view_salePaymentMethod".value = "Already Fully Paid";
+                $("#view_salePaymentMethod").val("Already Fully Paid");
                 var o = new Option("Already Fully Paid", "");
                 $(o).html(" Already Fully Paid");
                 $("#view_salePaymentMethod").append(o);
                 document.getElementById("view_savepayment").disabled = true;
                 document.getElementById("view_paymentType").disabled = true;
             } else if (response === "Payment still pending") {
-                "#view_salePaymentMethod".value = "Payment still pending";
+                $("#view_salePaymentMethod").val("Payment still pending");
                 var o = new Option("Payment still pending", "");
                 $(o).html("Payment still pending");
                 $("#view_salePaymentMethod").append(o);

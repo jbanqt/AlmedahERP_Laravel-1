@@ -68,7 +68,6 @@ class WorkCenterController extends Controller
         $wc_type = $form_data['wc_type'];
         $duration = $form_data["duration"];
 
-
         $work_center->wc_code = $wc_code;
         $work_center->wc_label = $wc_label;
         $work_center->wc_type = $wc_type;
@@ -131,10 +130,11 @@ class WorkCenterController extends Controller
         $work_center->wages = $form_data['wages'];
         $work_center->hour_rate = $form_data['hour_rate'];
 
-        if(isset($form_data['employee_id_set'])){ //checks if theres employee ID
+        if(isset($form_data['employee_id_set'])) { //checks if theres employee ID
             $work_center->employee_id_set = $form_data['employee_id_set'];
         }
-        if(isset($form_data['machine_code'])){ //checks if theres machine_code
+
+        if(isset($form_data['machine_code'])) { //checks if theres machine_code
             $work_center->machine_code = $form_data['machine_code'];
         }
 

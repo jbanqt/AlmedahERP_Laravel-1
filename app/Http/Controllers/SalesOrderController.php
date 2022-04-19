@@ -67,32 +67,31 @@ class SalesOrderController extends Controller
             return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
         }
         #Comment ko muna yung validation, nahihirapan akong mag-enter ng data para sa testing eh hahah
-        // $request->validate([
-        //     'costPrice' => 'required|numeric|gt:0',
-        //     'saleDate' => 'required|date',
-        //     'saleSupplyMethod' => 'required|alpha_dash',
-        //     'salePaymentMethod' => 'required|alpha_dash',
-        //     'saleDownpaymentCost' => 'nullable|numeric|gt:0',
-        //     'installmentType' => 'nullable|alpha_dash',
-        //     'paymentType' => 'nullable|alpha',
+         $request->validate([
+             'costPrice' => 'required|numeric|gt:0',
+             'saleDate' => 'required|date',
+             'salePaymentMethod' => 'required|alpha_dash',
+             'saleDownpaymentCost' => 'nullable|numeric|gt:0',
+             'installmentType' => 'nullable',
+             'paymentType' => 'required|alpha',
        
             
-        //     'customer_id' => 'nullable|numeric',
-        //     'lName' => 'required|alpha_dash',
-        //     'fName' => 'required|alpha_dash',
-        //     'branchName' => 'required|alpha_dash',
-        //     'contactNum' => 'required|alpha_dash',
-        //     'custAddress' => 'required|alpha_dash',
-        //     'custEmail' => 'required|alpha_dash',
-        //     'companyName' => 'required|alpha_dash',
+             'customer_id' => 'nullable|numeric',
+             'lName' => 'required',
+             'fName' => 'required',
+             'branchName' => 'required',
+             'contactNum' => 'required|numeric',
+             'custAddress' => 'required',
+             'custEmail' => 'required|email',
+             'companyName' => 'required',
 
-        //     'account_no' => 'nullable|alpha_dash',
-        //     'cheque_no' => 'nullable|alpha_dash',
-        //     'account_name' => 'nullable|alpha_dash',
-        //     'bank_name' => 'nullable|alpha_dash',
-        //     'branch_location' => 'nullable|alpha_dash',
-        //     'account_name' => 'nullable|alpha',
-        // ]);
+             'account_no' => 'nullable|numeric',
+             'cheque_no' => 'nullable|alpha_dash',
+             'account_name' => 'nullable',
+             'bank_name' => 'nullable',
+             'branch_location' => 'nullable',
+             'account_name' => 'nullable',
+         ]);
 
         try{
 
@@ -490,7 +489,7 @@ class SalesOrderController extends Controller
 
     function update(Request $request, $id){
         $validator = $request->validate([
-            'costPrice' => 'required|numeric|gt:0',
+            'status' => 'required',
         ]);
         $data = payment_logs::find($id);
         $sales = salesorder::find($data->sales_id);
@@ -584,7 +583,7 @@ class SalesOrderController extends Controller
             $data->payment_status = "Pending";
             $data->cheque_no = $form_data['view_cheque_no'];
             $data->account_name = $form_data['view_account_name'];
-            $payment_logs->bank_name = $form_data['view_bank_name'];
+            $data->bank_name = $form_data['view_bank_name'];
             $data->branch_location = $form_data['view_branch_location'];
         }else{
             $data->payment_status = "Completed";
